@@ -1,7 +1,3 @@
-/* =========================================
-   SEVEN WONDERS — FLOATING SKY
-========================================= */
-
 * {
   margin: 0;
   padding: 0;
@@ -12,17 +8,17 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 body {
-  overflow: hidden;
-  background: #a9ddf7;
+  background: #a8dcf7;
 }
 
 
-/* =========================================
+/* ================================
    SKY
-========================================= */
+================================ */
 
 .scene {
   position: relative;
@@ -32,32 +28,31 @@ body {
 
   background:
     radial-gradient(
-      circle at 50% 15%,
-      rgba(255, 248, 220, 0.95) 0%,
+      circle at 50% 12%,
+      rgba(255, 250, 220, 0.95) 0%,
       rgba(255, 255, 255, 0.35) 12%,
-      transparent 32%
+      transparent 30%
     ),
     linear-gradient(
       to bottom,
-      #82cff5 0%,
-      #b8e4f8 45%,
-      #e8f7ff 100%
+      #82cef5 0%,
+      #b9e5f9 48%,
+      #ecf9ff 100%
     );
 }
 
 
-/* =========================================
+/* ================================
    SUN
-========================================= */
+================================ */
 
 .sun {
   position: absolute;
-
-  width: 130px;
-  height: 130px;
+  width: 180px;
+  height: 180px;
 
   left: 50%;
-  top: 7%;
+  top: 2%;
 
   transform: translateX(-50%);
 
@@ -66,74 +61,68 @@ body {
   background:
     radial-gradient(
       circle,
-      rgba(255, 250, 215, 1) 0%,
-      rgba(255, 245, 200, 0.55) 25%,
-      rgba(255,255,255,0) 72%
+      rgba(255, 249, 215, 0.95),
+      rgba(255, 250, 225, 0.35) 35%,
+      transparent 72%
     );
 
-  filter: blur(5px);
+  filter: blur(8px);
 
   z-index: 1;
 }
 
 
-/* =========================================
+/* ================================
    BACKGROUND CLOUDS
-========================================= */
+================================ */
 
 .clouds-bg {
   position: absolute;
 
-  width: 160%;
-  height: 35%;
-
-  left: -30%;
+  left: -20%;
   bottom: -12%;
 
-  border-radius: 50%;
+  width: 140%;
+  height: 38%;
+
+  opacity: 0.9;
 
   background:
     radial-gradient(
-      ellipse at 10% 60%,
+      ellipse at 10% 65%,
       white 0%,
-      rgba(255,255,255,0.85) 25%,
-      transparent 50%
+      rgba(255,255,255,.85) 26%,
+      transparent 52%
     ),
     radial-gradient(
-      ellipse at 35% 50%,
+      ellipse at 36% 55%,
       white 0%,
-      rgba(255,255,255,0.85) 30%,
+      rgba(255,255,255,.9) 28%,
       transparent 55%
     ),
     radial-gradient(
-      ellipse at 65% 55%,
+      ellipse at 66% 55%,
       white 0%,
-      rgba(255,255,255,0.85) 30%,
+      rgba(255,255,255,.85) 28%,
       transparent 55%
     ),
     radial-gradient(
-      ellipse at 90% 60%,
+      ellipse at 90% 65%,
       white 0%,
-      rgba(255,255,255,0.8) 25%,
-      transparent 50%
+      rgba(255,255,255,.85) 26%,
+      transparent 52%
     );
 
-  filter: blur(20px);
-
-  opacity: 0.9;
+  filter: blur(18px);
 
   z-index: 2;
 
   animation:
-    cloudBreathing
-    12s
-    ease-in-out
-    infinite
-    alternate;
+    cloudBreathe 12s ease-in-out infinite alternate;
 }
 
 
-@keyframes cloudBreathing {
+@keyframes cloudBreathe {
 
   from {
     transform:
@@ -144,32 +133,28 @@ body {
   to {
     transform:
       translateY(-15px)
-      scale(1.04);
+      scale(1.03);
   }
 
 }
 
 
-/* =========================================
-   ALL FLOATING WONDERS
-========================================= */
+/* ================================
+   FLOATING WONDERS
+================================ */
 
 .wonder {
   position: absolute;
 
   left: 0;
 
-  width: clamp(
-    180px,
-    27vw,
-    420px
-  );
-
   z-index: 10;
 
   pointer-events: none;
 
   will-change: transform;
+
+  transform-origin: center center;
 }
 
 
@@ -179,13 +164,12 @@ body {
   width: 100%;
   height: auto;
 
+  background: transparent !important;
+
+  border: none !important;
+  outline: none !important;
+
   object-fit: contain;
-
-  background: transparent;
-
-  border: none;
-
-  outline: none;
 
   user-select: none;
 
@@ -194,116 +178,90 @@ body {
   filter:
     drop-shadow(
       0 20px 18px
-      rgba(50, 90, 130, 0.18)
+      rgba(55, 85, 120, 0.22)
     );
 }
 
 
-/* =========================================
-   DIFFERENT HEIGHTS
-========================================= */
-
-#chichen {
-  top: 8%;
-}
-
-#colosseum {
-  top: 24%;
-}
-
-#petra {
-  top: 45%;
-}
-
-#taj {
-  top: 11%;
-}
-
-#christ {
-  top: 57%;
-}
-
-#machu {
-  top: 36%;
-}
-
-#greatwall {
-  top: 66%;
-}
-
-
-/* =========================================
-   SLIGHTLY DIFFERENT SIZES
-========================================= */
+/* ================================
+   SIZES + HEIGHTS
+================================ */
 
 #chichen {
   width: clamp(150px, 22vw, 330px);
+  top: 7%;
 }
 
 #colosseum {
-  width: clamp(200px, 30vw, 450px);
+  width: clamp(210px, 31vw, 470px);
+  top: 22%;
 }
 
 #petra {
   width: clamp(170px, 25vw, 370px);
+  top: 44%;
 }
 
 #taj {
   width: clamp(180px, 27vw, 400px);
+  top: 9%;
 }
 
 #christ {
   width: clamp(130px, 19vw, 280px);
+  top: 59%;
 }
 
 #machu {
   width: clamp(200px, 30vw, 450px);
+  top: 38%;
 }
 
 #greatwall {
   width: clamp(200px, 31vw, 470px);
+  top: 65%;
 }
 
 
-/* =========================================
-   PHONE
-========================================= */
+/* ================================
+   MOBILE
+================================ */
 
 @media (max-width: 700px) {
 
   #chichen {
-    width: 37vw;
-    top: 8%;
+    width: 36vw;
+    top: 7%;
   }
 
   #colosseum {
-    width: 48vw;
-    top: 23%;
+    width: 52vw;
+    top: 21%;
   }
 
   #petra {
     width: 40vw;
-    top: 43%;
+    top: 42%;
   }
 
   #taj {
-    width: 43vw;
-    top: 12%;
+    width: 44vw;
+    top: 10%;
   }
 
   #christ {
     width: 30vw;
-    top: 60%;
+    top: 61%;
   }
 
   #machu {
     width: 48vw;
-    top: 40%;
+    top: 42%;
   }
 
   #greatwall {
-    width: 48vw;
-    top: 70%;
+    width: 49vw;
+    top: 68%;
   }
 
 }
