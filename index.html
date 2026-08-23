@@ -2,898 +2,158 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+  <title>Artgrid Cloud</title>
 
-<title>Artgrid Cloud — Seven Wonders</title>
-
-
-<style>
-
-/* =========================================
-   BASIC PAGE
-========================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-}
-
-body {
-  overflow-x: hidden;
-  background: #dff3ff;
-}
-
-
-/* =========================================
-   CLOUD SKY
-========================================= */
-
-.scene {
-
-  position: relative;
-
-  width: 100vw;
-  height: 100vh;
-
-  min-height: 700px;
-
-  overflow: hidden;
-
-  background:
-
-    radial-gradient(
-      circle at 50% 25%,
-      rgba(255,255,255,0.95) 0%,
-      rgba(255,255,255,0.35) 18%,
-      transparent 38%
-    ),
-
-    linear-gradient(
-      to bottom,
-      #91d4fa 0%,
-      #bce6fa 38%,
-      #daf1fb 68%,
-      #f8fcff 100%
-    );
-
-}
-
-
-/* =========================================
-   SOFT BACKGROUND CLOUDS
-========================================= */
-
-.cloud {
-
-  position: absolute;
-
-  border-radius: 50%;
-
-  background: rgba(255,255,255,0.80);
-
-  filter: blur(35px);
-
-  pointer-events: none;
-
-}
-
-
-.cloud1 {
-
-  width: 500px;
-  height: 150px;
-
-  top: 28%;
-  left: -220px;
-
-  animation: cloudRight 35s linear infinite;
-
-}
-
-
-.cloud2 {
-
-  width: 650px;
-  height: 170px;
-
-  top: 55%;
-  right: -300px;
-
-  opacity: 0.60;
-
-  animation: cloudLeft 42s linear infinite;
-
-}
-
-
-.cloud3 {
-
-  width: 800px;
-  height: 220px;
-
-  bottom: -100px;
-  left: 10%;
-
-  opacity: 0.85;
-
-  animation: cloudBottom 14s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes cloudRight {
-
-  from {
-    transform: translateX(-100px);
-  }
-
-  to {
-    transform: translateX(140vw);
-  }
-
-}
-
-
-@keyframes cloudLeft {
-
-  from {
-    transform: translateX(100px);
-  }
-
-  to {
-    transform: translateX(-140vw);
-  }
-
-}
-
-
-@keyframes cloudBottom {
-
-  from {
-    transform: translateY(15px);
-  }
-
-  to {
-    transform: translateY(-25px);
-  }
-
-}
-
-
-/* =========================================
-   WONDER
-========================================= */
-
-.wonder {
-
-  position: absolute;
-
-  z-index: 10;
-
-  transform-origin: center;
-
-  filter:
-    drop-shadow(
-      0 20px 18px
-      rgba(60,90,120,0.20)
-    );
-
-  will-change: transform;
-
-}
-
-
-.wonder img {
-
-  display: block;
-
-  width: 100%;
-  height: auto;
-
-  object-fit: contain;
-
-  pointer-events: none;
-
-  user-select: none;
-
-}
-
-
-/*
-IMPORTANT:
-
-If an image does not exist yet,
-JavaScript hides the entire container.
-
-This prevents the blue ? icon
-and ALT text from appearing.
-*/
-
-
-/* =========================================
-   1 — CHICHÉN ITZÁ
-========================================= */
-
-#chichen {
-
-  width: 20vw;
-
-  min-width: 130px;
-  max-width: 270px;
-
-  left: 5%;
-  top: 12%;
-
-  animation:
-    float1 6s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes float1 {
-
-  from {
-    transform:
-      translate3d(0, 8px, 0)
-      rotate(-1deg);
-  }
-
-  to {
-    transform:
-      translate3d(8px, -30px, 0)
-      rotate(1deg);
-  }
-
-}
-
-
-/* =========================================
-   2 — COLOSSEUM
-========================================= */
-
-#colosseum {
-
-  width: 29vw;
-
-  min-width: 200px;
-  max-width: 430px;
-
-  left: 35%;
-  top: 7%;
-
-  animation:
-    float2 7s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes float2 {
-
-  from {
-    transform:
-      translate3d(-5px, 6px, 0)
-      rotate(0.5deg);
-  }
-
-  to {
-    transform:
-      translate3d(12px, -38px, 0)
-      rotate(-0.7deg);
-  }
-
-}
-
-
-/* =========================================
-   3 — PETRA
-========================================= */
-
-#petra {
-
-  width: 23vw;
-
-  min-width: 160px;
-  max-width: 320px;
-
-  left: 8%;
-  top: 45%;
-
-  animation:
-    float3 8s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes float3 {
-
-  from {
-    transform:
-      translate3d(0, 8px, 0)
-      rotate(-0.5deg);
-  }
-
-  to {
-    transform:
-      translate3d(-10px, -27px, 0)
-      rotate(0.8deg);
-  }
-
-}
-
-
-/* =========================================
-   4 — TAJ MAHAL
-========================================= */
-
-#taj {
-
-  width: 25vw;
-
-  min-width: 170px;
-  max-width: 350px;
-
-  right: 5%;
-  top: 28%;
-
-  animation:
-    float4 9s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes float4 {
-
-  from {
-    transform:
-      translate3d(5px, 5px, 0)
-      rotate(0.6deg);
-  }
-
-  to {
-    transform:
-      translate3d(-8px, -35px, 0)
-      rotate(-0.5deg);
-  }
-
-}
-
-
-/* =========================================
-   5 — CHRIST THE REDEEMER
-========================================= */
-
-#christ {
-
-  width: 17vw;
-
-  min-width: 120px;
-  max-width: 240px;
-
-  left: 8%;
-  bottom: 4%;
-
-  animation:
-    float5 7.5s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes float5 {
-
-  from {
-    transform:
-      translate3d(-3px, 4px, 0)
-      rotate(-0.8deg);
-  }
-
-  to {
-    transform:
-      translate3d(10px, -31px, 0)
-      rotate(0.9deg);
-  }
-
-}
-
-
-/* =========================================
-   6 — MACHU PICCHU
-========================================= */
-
-#machu {
-
-  width: 27vw;
-
-  min-width: 190px;
-  max-width: 390px;
-
-  left: 38%;
-  bottom: 3%;
-
-  animation:
-    float6 10s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes float6 {
-
-  from {
-    transform:
-      translate3d(5px, 8px, 0)
-      rotate(0.4deg);
-  }
-
-  to {
-    transform:
-      translate3d(-12px, -30px, 0)
-      rotate(-0.6deg);
-  }
-
-}
-
-
-/* =========================================
-   7 — GREAT WALL
-========================================= */
-
-#greatwall {
-
-  width: 27vw;
-
-  min-width: 190px;
-  max-width: 400px;
-
-  right: 5%;
-  bottom: 10%;
-
-  animation:
-    float7 8.5s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes float7 {
-
-  from {
-    transform:
-      translate3d(5px, 5px, 0)
-      rotate(-0.4deg);
-  }
-
-  to {
-    transform:
-      translate3d(-8px, -33px, 0)
-      rotate(0.6deg);
-  }
-
-}
-
-
-/* =========================================
-   CLOUD HALO AROUND EACH WONDER
-
-   This helps visually blend genuinely
-   transparent PNGs into the sky.
-========================================= */
-
-.wonder::after {
-
-  content: "";
-
-  position: absolute;
-
-  width: 85%;
-  height: 30%;
-
-  left: 7.5%;
-  bottom: -5%;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(255,255,255,0.85),
-      rgba(255,255,255,0.35) 50%,
-      transparent 75%
-    );
-
-  filter: blur(15px);
-
-  z-index: -1;
-
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 700px) {
-
-  #chichen {
-
-    width: 25vw;
-
-    left: 3%;
-    top: 15%;
-
-  }
-
-
-  #colosseum {
-
-    width: 40vw;
-
-    left: 31%;
-    top: 5%;
-
-  }
-
-
-  #taj {
-
-    width: 31vw;
-
-    right: 3%;
-    top: 31%;
-
-  }
-
-
-  #petra {
-
-    width: 30vw;
-
-    left: 3%;
-    top: 43%;
-
-  }
-
-
-  #greatwall {
-
-    width: 35vw;
-
-    right: 3%;
-    bottom: 21%;
-
-  }
-
-
-  #christ {
-
-    width: 24vw;
-
-    left: 5%;
-    bottom: 5%;
-
-  }
-
-
-  #machu {
-
-    width: 37vw;
-
-    left: 34%;
-    bottom: 3%;
-
-  }
-
-}
-
-</style>
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
 
 <body>
 
+  <main class="scene" id="scene">
 
-<main
-  class="scene"
-  id="scene"
->
-
-
-  <!-- BACKGROUND CLOUDS -->
-
-  <div class="cloud cloud1"></div>
-
-  <div class="cloud cloud2"></div>
-
-  <div class="cloud cloud3"></div>
+    <div class="sky"></div>
+    <div class="sun-glow"></div>
 
 
+    <!-- 1. CHICHEN ITZA -->
 
-  <!-- 1 — CHICHÉN ITZÁ -->
-
-  <div
-    class="wonder"
-    id="chichen"
-    data-depth="0.65"
-  >
-
-    <img
-      src="chichen-itza.PNG"
-      alt=""
+    <div
+      class="wonder"
+      id="chichen"
+      data-depth="0.65"
     >
 
-  </div>
+      <img
+        src="chichen-itza.PNG"
+        alt=""
+        onerror="this.parentElement.style.display='none'"
+      >
+
+    </div>
 
 
+    <!-- 2. COLOSSEUM -->
 
-  <!-- 2 — COLOSSEUM -->
-
-  <div
-    class="wonder"
-    id="colosseum"
-    data-depth="1"
-  >
-
-    <img
-      src="colosseum.PNG"
-      alt=""
+    <div
+      class="wonder"
+      id="colosseum"
+      data-depth="0.85"
     >
 
-  </div>
+      <img
+        src="colosseum.PNG"
+        alt=""
+        onerror="this.parentElement.style.display='none'"
+      >
+
+    </div>
 
 
+    <!-- 3. PETRA -->
 
-  <!-- 3 — PETRA -->
-
-  <div
-    class="wonder"
-    id="petra"
-    data-depth="0.55"
-  >
-
-    <img
-      src="petra.PNG"
-      alt=""
+    <div
+      class="wonder"
+      id="petra"
+      data-depth="0.55"
     >
 
-  </div>
+      <img
+        src="petra.PNG"
+        alt=""
+        onerror="this.parentElement.style.display='none'"
+      >
+
+    </div>
 
 
+    <!-- 4. TAJ MAHAL -->
 
-  <!-- 4 — TAJ MAHAL -->
-
-  <div
-    class="wonder"
-    id="taj"
-    data-depth="0.85"
-  >
-
-    <img
-      src="taj-mahal.PNG"
-      alt=""
+    <div
+      class="wonder"
+      id="taj"
+      data-depth="1"
     >
 
-  </div>
+      <img
+        src="taj-mahal.PNG"
+        alt=""
+        onerror="this.parentElement.style.display='none'"
+      >
+
+    </div>
 
 
+    <!-- 5. CHRIST THE REDEEMER -->
 
-  <!-- 5 — CHRIST THE REDEEMER -->
-
-  <div
-    class="wonder"
-    id="christ"
-    data-depth="0.7"
-  >
-
-    <img
-      src="christ-redeemer.PNG"
-      alt=""
+    <div
+      class="wonder"
+      id="christ"
+      data-depth="0.75"
     >
 
-  </div>
+      <img
+        src="christ-redeemer.PNG"
+        alt=""
+        onerror="this.parentElement.style.display='none'"
+      >
+
+    </div>
 
 
+    <!-- 6. MACHU PICCHU -->
 
-  <!-- 6 — MACHU PICCHU -->
-
-  <div
-    class="wonder"
-    id="machu"
-    data-depth="0.45"
-  >
-
-    <img
-      src="machu-picchu.PNG"
-      alt=""
+    <div
+      class="wonder"
+      id="machu"
+      data-depth="0.45"
     >
 
-  </div>
+      <img
+        src="machu-picchu.PNG"
+        alt=""
+        onerror="this.parentElement.style.display='none'"
+      >
+
+    </div>
 
 
+    <!-- 7. GREAT WALL -->
 
-  <!-- 7 — GREAT WALL -->
-
-  <div
-    class="wonder"
-    id="greatwall"
-    data-depth="0.9"
-  >
-
-    <img
-      src="great-wall.PNG"
-      alt=""
+    <div
+      class="wonder"
+      id="greatwall"
+      data-depth="0.9"
     >
 
-  </div>
+      <img
+        src="great-wall.PNG"
+        alt=""
+        onerror="this.parentElement.style.display='none'"
+      >
+
+    </div>
 
 
-</main>
+    <!-- CLOUDS -->
+
+    <div class="cloud cloud-back-1"></div>
+    <div class="cloud cloud-back-2"></div>
+    <div class="cloud cloud-front-1"></div>
+    <div class="cloud cloud-front-2"></div>
+
+    <div class="atmosphere"></div>
+
+  </main>
 
 
-
-<script>
-
-/* =========================================
-   HIDE MISSING PNG FILES
-========================================= */
-
-document
-  .querySelectorAll(".wonder img")
-  .forEach(function(image) {
-
-    image.addEventListener(
-      "error",
-      function() {
-
-        image
-          .closest(".wonder")
-          .style.display = "none";
-
-      }
-    );
-
-  });
-
-
-
-/* =========================================
-   MOUSE PARALLAX
-========================================= */
-
-const wonders =
-  document.querySelectorAll(".wonder");
-
-
-let mouseX = 0;
-let mouseY = 0;
-
-let targetX = 0;
-let targetY = 0;
-
-
-
-document.addEventListener(
-  "mousemove",
-  function(event) {
-
-    targetX =
-      event.clientX /
-      window.innerWidth -
-      0.5;
-
-    targetY =
-      event.clientY /
-      window.innerHeight -
-      0.5;
-
-  }
-);
-
-
-
-function updateParallax() {
-
-  mouseX +=
-    (targetX - mouseX) *
-    0.035;
-
-  mouseY +=
-    (targetY - mouseY) *
-    0.035;
-
-
-  wonders.forEach(
-    function(wonder) {
-
-      const depth =
-        Number(
-          wonder.dataset.depth
-        ) || 0.5;
-
-
-      wonder.style.marginLeft =
-        (
-          mouseX *
-          35 *
-          depth
-        ) + "px";
-
-
-      wonder.style.marginTop =
-        (
-          mouseY *
-          22 *
-          depth
-        ) + "px";
-
-    }
-  );
-
-
-  requestAnimationFrame(
-    updateParallax
-  );
-
-}
-
-
-updateParallax();
-
-
-
-/* =========================================
-   TOUCH PARALLAX
-
-   Works by moving your finger,
-   so it does NOT require motion permission.
-========================================= */
-
-document.addEventListener(
-  "touchmove",
-  function(event) {
-
-    if (
-      !event.touches ||
-      event.touches.length === 0
-    ) {
-      return;
-    }
-
-
-    const touch =
-      event.touches[0];
-
-
-    targetX =
-      touch.clientX /
-      window.innerWidth -
-      0.5;
-
-
-    targetY =
-      touch.clientY /
-      window.innerHeight -
-      0.5;
-
-  },
-  {
-    passive: true
-  }
-);
-
-</script>
-
+  <script src="animation.js"></script>
 
 </body>
 
