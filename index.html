@@ -1,14 +1,194 @@
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Artgrid Cloud — Seven Wonders</title>
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
-    <h1>cloud</h1>
-    <p>sunshine Lollipops and rainbows</p>
-    <p>and everything that's wonderful</p>
-    <p>when you're near the rainny noes</p>
-    <p>just know that your are so very fine</p>
+
+  <main class="scene" id="scene">
+
+
+    <!-- SKY AND LIGHT -->
+
+    <div class="sky"></div>
+
+    <div class="sun-glow"></div>
+
+
+    <!-- =========================
+         1. CHICHÉN ITZÁ
+    ========================== -->
+
+    <div
+      class="wonder"
+      id="chichen"
+      data-depth="0.65"
+    >
+
+      <img
+        src="chichen-itza.png"
+        alt="Chichén Itzá"
+      >
+
+    </div>
+
+
+
+    <!-- =========================
+         2. COLOSSEUM
+    ========================== -->
+
+    <div
+      class="wonder"
+      id="colosseum"
+      data-depth="0.85"
+    >
+
+      <img
+        src="colosseum.png"
+        alt="The Colosseum"
+      >
+
+    </div>
+
+
+
+    <!-- =========================
+         3. PETRA
+    ========================== -->
+
+    <div
+      class="wonder"
+      id="petra"
+      data-depth="0.55"
+    >
+
+      <img
+        src="petra.png"
+        alt="Petra"
+      >
+
+    </div>
+
+
+
+    <!-- =========================
+         4. TAJ MAHAL
+    ========================== -->
+
+    <div
+      class="wonder"
+      id="taj"
+      data-depth="1.0"
+    >
+
+      <img
+        src="taj-mahal.png"
+        alt="Taj Mahal"
+      >
+
+    </div>
+
+
+
+    <!-- =========================
+         5. CHRIST THE REDEEMER
+    ========================== -->
+
+    <div
+      class="wonder"
+      id="christ"
+      data-depth="0.75"
+    >
+
+      <img
+        src="christ-redeemer.png"
+        alt="Christ the Redeemer"
+      >
+
+    </div>
+
+
+
+    <!-- =========================
+         6. MACHU PICCHU
+    ========================== -->
+
+    <div
+      class="wonder"
+      id="machu"
+      data-depth="0.45"
+    >
+
+      <img
+        src="machu-picchu.png"
+        alt="Machu Picchu"
+      >
+
+    </div>
+
+
+
+    <!-- =========================
+         7. GREAT WALL OF CHINA
+    ========================== -->
+
+    <div
+      class="wonder"
+      id="greatwall"
+      data-depth="0.9"
+    >
+
+      <img
+        src="great-wall.png"
+        alt="Great Wall of China"
+      >
+
+    </div>
+
+
+
+    <!-- =========================
+         CLOUD LAYERS
+    ========================== -->
+
+    <div class="cloud cloud-back-1"></div>
+
+    <div class="cloud cloud-back-2"></div>
+
+    <div class="cloud cloud-front-1"></div>
+
+    <div class="cloud cloud-front-2"></div>
+
+
+    <!-- SOFT ATMOSPHERIC OVERLAY -->
+
+    <div class="atmosphere"></div>
+
+
+  </main>
+
+
+  <!-- ANIMATION CODE -->
+
+  <script src="animation.js"></script>
+
+
 </body>
+
 </html>
