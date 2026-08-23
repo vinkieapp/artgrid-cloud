@@ -9,25 +9,26 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Artgrid Cloud</title>
+  <title>Seven Wonders</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <main class="scene" id="scene">
+  <div class="scene" id="scene">
 
     <div class="sky"></div>
-    <div class="sun-glow"></div>
+    <div class="sun"></div>
+    <div class="clouds-bg"></div>
 
 
-    <!-- 1. CHICHEN ITZA -->
+    <!-- CHICHEN ITZA -->
 
     <div
       class="wonder"
       id="chichen"
-      data-depth="0.65"
+      data-speed="0.15"
     >
 
       <img
@@ -39,12 +40,12 @@
     </div>
 
 
-    <!-- 2. COLOSSEUM -->
+    <!-- COLOSSEUM -->
 
     <div
       class="wonder"
       id="colosseum"
-      data-depth="0.85"
+      data-speed="0.25"
     >
 
       <img
@@ -56,12 +57,12 @@
     </div>
 
 
-    <!-- 3. PETRA -->
+    <!-- PETRA -->
 
     <div
       class="wonder"
       id="petra"
-      data-depth="0.55"
+      data-speed="0.18"
     >
 
       <img
@@ -73,12 +74,12 @@
     </div>
 
 
-    <!-- 4. TAJ MAHAL -->
+    <!-- TAJ MAHAL -->
 
     <div
       class="wonder"
       id="taj"
-      data-depth="1"
+      data-speed="0.22"
     >
 
       <img
@@ -90,12 +91,12 @@
     </div>
 
 
-    <!-- 5. CHRIST THE REDEEMER -->
+    <!-- CHRIST THE REDEEMER -->
 
     <div
       class="wonder"
       id="christ"
-      data-depth="0.75"
+      data-speed="0.12"
     >
 
       <img
@@ -107,12 +108,12 @@
     </div>
 
 
-    <!-- 6. MACHU PICCHU -->
+    <!-- MACHU PICCHU -->
 
     <div
       class="wonder"
       id="machu"
-      data-depth="0.45"
+      data-speed="0.16"
     >
 
       <img
@@ -124,12 +125,12 @@
     </div>
 
 
-    <!-- 7. GREAT WALL -->
+    <!-- GREAT WALL OF CHINA -->
 
     <div
       class="wonder"
       id="greatwall"
-      data-depth="0.9"
+      data-speed="0.20"
     >
 
       <img
@@ -140,17 +141,7 @@
 
     </div>
 
-
-    <!-- CLOUDS -->
-
-    <div class="cloud cloud-back-1"></div>
-    <div class="cloud cloud-back-2"></div>
-    <div class="cloud cloud-front-1"></div>
-    <div class="cloud cloud-front-2"></div>
-
-    <div class="atmosphere"></div>
-
-  </main>
+  </div>
 
 
   <script src="animation.js"></script>
