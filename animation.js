@@ -1,106 +1,99 @@
 /* =========================================
-   SEVEN WONDERS — FLOAT ACROSS THE SKY
-========================================= */
-
-const wonders = document.querySelectorAll(".wonder");
-
-
-/* =========================================
-   SETTINGS
+   SEVEN WONDERS
+   SLOW FLOATING LEFT → RIGHT
 ========================================= */
 
 const wonderSettings = {
+
   chichen: {
-    speed: 0.018,
-    delay: 0,
-    amplitude: 18,
+    duration: 52000,
+    start: 0.05,
+    bob: 15,
     phase: 0
   },
 
   colosseum: {
-    speed: 0.022,
-    delay: 1800,
-    amplitude: 24,
-    phase: 1.1
+    duration: 46000,
+    start: 0.28,
+    bob: 22,
+    phase: 1.2
   },
 
   petra: {
-    speed: 0.017,
-    delay: 3600,
-    amplitude: 20,
-    phase: 2.3
+    duration: 58000,
+    start: 0.70,
+    bob: 18,
+    phase: 2.4
   },
 
   taj: {
-    speed: 0.020,
-    delay: 5400,
-    amplitude: 22,
-    phase: 3.2
+    duration: 50000,
+    start: 0.52,
+    bob: 20,
+    phase: 3.1
   },
 
   christ: {
-    speed: 0.016,
-    delay: 7200,
-    amplitude: 16,
-    phase: 4.4
+    duration: 62000,
+    start: 0.12,
+    bob: 15,
+    phase: 4.2
   },
 
   machu: {
-    speed: 0.019,
-    delay: 9000,
-    amplitude: 21,
-    phase: 5.1
+    duration: 56000,
+    start: 0.45,
+    bob: 21,
+    phase: 5.2
   },
 
   greatwall: {
-    speed: 0.015,
-    delay: 10800,
-    amplitude: 25,
-    phase: 6.2
+    duration: 65000,
+    start: 0.76,
+    bob: 24,
+    phase: 6.1
   }
+
 };
 
 
-/* =========================================
-   STATE
-========================================= */
-
-const startTime = performance.now();
+const wonders =
+  document.querySelectorAll(".wonder");
 
 
-wonders.forEach((wonder) => {
+/* Hide only images that genuinely fail */
 
-  const id = wonder.id;
+document
+  .querySelectorAll(".wonder img")
+  .forEach((img) => {
 
-  const settings =
-    wonderSettings[id] || {
-      speed: 0.018,
-      delay: 0,
-      amplitude: 20,
-      phase: 0
-    };
+    img.addEventListener(
+      "error",
+      function () {
+
+        console.log(
+          "Image failed:",
+          img.src
+        );
+
+        img
+          .closest(".wonder")
+          .style.display = "none";
+
+      }
+    );
+
+  });
 
 
-  wonder.dataset.speed = settings.speed;
-  wonder.dataset.delay = settings.delay;
-  wonder.dataset.amplitude = settings.amplitude;
-  wonder.dataset.phase = settings.phase;
-
-});
+const startingTime =
+  performance.now();
 
 
-/* =========================================
-   ANIMATE
-========================================= */
-
-function animate(timestamp) {
+function animate(now) {
 
   const elapsed =
-    timestamp - startTime;
-
-
-  const screenWidth =
-    window.innerWidth;
+    now - startingTime;
 
 
   wonders.forEach((wonder) => {
@@ -112,121 +105,103 @@ function animate(timestamp) {
     }
 
 
-    const delay =
-      Number(wonder.dataset.delay);
+    const settings =
+      wonderSettings[wonder.id];
 
 
-    const speed =
-      Number(wonder.dataset.speed);
-
-
-    const amplitude =
-      Number(wonder.dataset.amplitude);
-
-
-    const phase =
-      Number(wonder.dataset.phase);
-
-
-    const width =
-      wonder.offsetWidth || 250;
-
-
-    /*
-      Travel distance includes space
-      beyond both sides of the screen.
-    */
-
-    const travelDistance =
-      screenWidth + width * 2;
-
-
-    /*
-      Keep each wonder offscreen
-      until its starting delay.
-    */
-
-    if (elapsed < delay) {
-
-      wonder.style.transform =
-        `translate3d(${-width * 1.3}px, 0px, 0)`;
-
+    if (!settings) {
       return;
-
     }
 
 
-    const localTime =
-      elapsed - delay;
+    const width =
+      wonder.offsetWidth || 300;
 
 
     /*
-      Horizontal progress.
-      When it reaches the far right,
-      it loops back to the left.
+      Travel begins just outside left edge
+      and ends just outside right edge.
     */
 
-    const progress =
+    const startX =
+      -width - 40;
+
+
+    const endX =
+      window.innerWidth + 40;
+
+
+    const totalDistance =
+      endX - startX;
+
+
+    /*
+      start determines where the wonder
+      is when the page first loads.
+
+      This means we do NOT wait 30 seconds
+      before seeing the Colosseum.
+    */
+
+    const cycle =
       (
-        localTime *
-        speed
-      ) %
-      travelDistance;
+        elapsed /
+        settings.duration +
+        settings.start
+      ) % 1;
 
 
     const x =
-      -width * 1.3 +
-      progress;
+      startX +
+      totalDistance *
+      cycle;
 
 
     /*
-      Gentle vertical floating.
+      Gentle vertical floating
     */
 
     const y =
       Math.sin(
-        localTime * 0.0012 +
-        phase
+        elapsed * 0.001 +
+        settings.phase
       ) *
-      amplitude;
+      settings.bob;
 
 
     /*
-      Tiny rotation makes the
-      islands feel less mechanical.
+      Tiny natural rotation
     */
 
     const rotation =
       Math.sin(
-        localTime * 0.0007 +
-        phase
+        elapsed * 0.00065 +
+        settings.phase
       ) *
-      1.1;
+      0.8;
 
 
     /*
-      Very subtle scale pulse.
+      Very subtle scale movement
     */
 
     const scale =
       1 +
       Math.sin(
-        localTime * 0.0005 +
-        phase
+        elapsed * 0.00045 +
+        settings.phase
       ) *
-      0.015;
+      0.012;
 
 
     wonder.style.transform =
-      `
-      translate3d(
+      `translate3d(
         ${x}px,
         ${y}px,
         0
       )
       rotate(${rotation}deg)
-      scale(${scale})
-      `;
+      scale(${scale})`;
 
   });
 
@@ -237,48 +212,3 @@ function animate(timestamp) {
 
 
 requestAnimationFrame(animate);
-
-
-/* =========================================
-   HIDE MISSING IMAGES
-========================================= */
-
-document
-  .querySelectorAll(".wonder img")
-  .forEach((image) => {
-
-    image.addEventListener(
-      "error",
-      function() {
-
-        const parent =
-          image.closest(".wonder");
-
-
-        if (parent) {
-          parent.style.display =
-            "none";
-        }
-
-      }
-    );
-
-  });
-
-
-/* =========================================
-   RESIZE
-========================================= */
-
-window.addEventListener(
-  "resize",
-  () => {
-
-    /*
-      requestAnimationFrame automatically
-      uses the new screen width on the
-      next frame.
-    */
-
-  }
-);
