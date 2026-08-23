@@ -1,1 +1,687 @@
-/* Seven Wonders Floating World*/
+/* =========================================
+   ARTGRID CLOUD
+   Seven Wonders Floating World
+========================================= */
+
+
+/* ---------- RESET ---------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background: #b9d9ee;
+}
+
+
+/* =========================================
+   MAIN SCENE
+========================================= */
+
+.scene {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  perspective: 1200px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #8fc4e8 0%,
+      #bcdcf0 42%,
+      #e9f3f8 72%,
+      #ffffff 100%
+    );
+}
+
+
+/* =========================================
+   SKY
+========================================= */
+
+.sky {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 48% 20%,
+      rgba(255, 255, 245, 0.95),
+      rgba(255, 255, 255, 0.20) 18%,
+      transparent 45%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   SUN GLOW
+========================================= */
+
+.sun-glow {
+  position: absolute;
+
+  width: 65vw;
+  height: 65vw;
+
+  left: 17%;
+  top: -42%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 250, 220, 0.70) 0%,
+      rgba(255, 255, 255, 0.25) 35%,
+      rgba(255, 255, 255, 0) 70%
+    );
+
+  filter: blur(10px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   ALL SEVEN WONDERS
+========================================= */
+
+.wonder {
+  position: absolute;
+
+  width: clamp(110px, 14vw, 230px);
+
+  transform-origin: center center;
+
+  will-change:
+    transform,
+    margin-left,
+    margin-top;
+
+  z-index: 10;
+
+  filter:
+    drop-shadow(
+      0 18px 14px
+      rgba(30, 50, 65, 0.22)
+    );
+}
+
+
+.wonder img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+/* =========================================
+   1 — CHICHÉN ITZÁ
+========================================= */
+
+#chichen {
+
+  left: 5%;
+  top: 16%;
+
+  width: clamp(105px, 13vw, 205px);
+
+  animation:
+    float-chichen
+    6.5s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+@keyframes float-chichen {
+
+  0% {
+    transform:
+      translateY(5px)
+      rotate(-1deg);
+  }
+
+  100% {
+    transform:
+      translateY(-25px)
+      rotate(1deg);
+  }
+
+}
+
+
+/* =========================================
+   2 — COLOSSEUM
+========================================= */
+
+#colosseum {
+
+  left: 27%;
+  top: 5%;
+
+  width: clamp(130px, 16vw, 260px);
+
+  animation:
+    float-colosseum
+    8.5s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+@keyframes float-colosseum {
+
+  0% {
+    transform:
+      translateY(-3px)
+      rotate(0.8deg);
+  }
+
+  100% {
+    transform:
+      translateY(-35px)
+      rotate(-0.7deg);
+  }
+
+}
+
+
+/* =========================================
+   3 — PETRA
+========================================= */
+
+#petra {
+
+  left: 48%;
+  top: 25%;
+
+  width: clamp(125px, 15vw, 240px);
+
+  animation:
+    float-petra
+    7.2s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+@keyframes float-petra {
+
+  0% {
+    transform:
+      translateY(4px)
+      rotate(-0.6deg);
+  }
+
+  100% {
+    transform:
+      translateY(-21px)
+      rotate(0.6deg);
+  }
+
+}
+
+
+/* =========================================
+   4 — TAJ MAHAL
+========================================= */
+
+#taj {
+
+  right: 5%;
+  top: 9%;
+
+  width: clamp(145px, 17vw, 275px);
+
+  animation:
+    float-taj
+    9.5s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+@keyframes float-taj {
+
+  0% {
+    transform:
+      translateY(5px)
+      rotate(0.5deg);
+  }
+
+  100% {
+    transform:
+      translateY(-32px)
+      rotate(-0.5deg);
+  }
+
+}
+
+
+/* =========================================
+   5 — CHRIST THE REDEEMER
+========================================= */
+
+#christ {
+
+  left: 13%;
+  bottom: 9%;
+
+  width: clamp(115px, 14vw, 220px);
+
+  animation:
+    float-christ
+    7.8s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+@keyframes float-christ {
+
+  0% {
+    transform:
+      translateY(2px)
+      rotate(-0.8deg);
+  }
+
+  100% {
+    transform:
+      translateY(-29px)
+      rotate(0.8deg);
+  }
+
+}
+
+
+/* =========================================
+   6 — MACHU PICCHU
+========================================= */
+
+#machu {
+
+  left: 42%;
+  bottom: 5%;
+
+  width: clamp(150px, 19vw, 300px);
+
+  animation:
+    float-machu
+    10.5s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+@keyframes float-machu {
+
+  0% {
+    transform:
+      translateY(7px)
+      rotate(0.4deg);
+  }
+
+  100% {
+    transform:
+      translateY(-27px)
+      rotate(-0.5deg);
+  }
+
+}
+
+
+/* =========================================
+   7 — GREAT WALL OF CHINA
+========================================= */
+
+#greatwall {
+
+  right: 5%;
+  bottom: 13%;
+
+  width: clamp(150px, 20vw, 320px);
+
+  animation:
+    float-wall
+    8.8s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+@keyframes float-wall {
+
+  0% {
+    transform:
+      translateY(4px)
+      rotate(-0.4deg);
+  }
+
+  100% {
+    transform:
+      translateY(-31px)
+      rotate(0.5deg);
+  }
+
+}
+
+
+/* =========================================
+   CLOUDS
+========================================= */
+
+.cloud {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    rgba(255, 255, 255, 0.85);
+
+  filter: blur(28px);
+}
+
+
+/* FAR CLOUD — LEFT */
+
+.cloud-back-1 {
+
+  width: 520px;
+  height: 135px;
+
+  left: -300px;
+  top: 28%;
+
+  opacity: 0.35;
+
+  z-index: 2;
+
+  animation:
+    cloud-left
+    42s
+    linear
+    infinite;
+}
+
+
+/* FAR CLOUD — RIGHT */
+
+.cloud-back-2 {
+
+  width: 650px;
+  height: 170px;
+
+  right: -350px;
+  top: 48%;
+
+  opacity: 0.30;
+
+  z-index: 3;
+
+  animation:
+    cloud-right
+    50s
+    linear
+    infinite;
+}
+
+
+/* FRONT CLOUD — LEFT */
+
+.cloud-front-1 {
+
+  width: 700px;
+  height: 220px;
+
+  left: -250px;
+  bottom: -80px;
+
+  opacity: 0.75;
+
+  z-index: 20;
+
+  animation:
+    cloud-front-left
+    35s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+/* FRONT CLOUD — RIGHT */
+
+.cloud-front-2 {
+
+  width: 750px;
+  height: 230px;
+
+  right: -270px;
+  bottom: -100px;
+
+  opacity: 0.80;
+
+  z-index: 21;
+
+  animation:
+    cloud-front-right
+    40s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+/* =========================================
+   CLOUD MOVEMENT
+========================================= */
+
+@keyframes cloud-left {
+
+  from {
+    transform:
+      translateX(-100px);
+  }
+
+  to {
+    transform:
+      translateX(140vw);
+  }
+
+}
+
+
+@keyframes cloud-right {
+
+  from {
+    transform:
+      translateX(100px);
+  }
+
+  to {
+    transform:
+      translateX(-140vw);
+  }
+
+}
+
+
+@keyframes cloud-front-left {
+
+  from {
+    transform:
+      translateX(-60px)
+      translateY(0);
+  }
+
+  to {
+    transform:
+      translateX(100px)
+      translateY(-15px);
+  }
+
+}
+
+
+@keyframes cloud-front-right {
+
+  from {
+    transform:
+      translateX(70px)
+      translateY(5px);
+  }
+
+  to {
+    transform:
+      translateX(-100px)
+      translateY(-20px);
+  }
+
+}
+
+
+/* =========================================
+   ATMOSPHERE
+========================================= */
+
+.atmosphere {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 30;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.04),
+      transparent 45%,
+      rgba(255,255,255,0.14)
+    );
+}
+
+
+/* =========================================
+   PHONE / TABLET
+========================================= */
+
+@media (max-width: 700px) {
+
+  .wonder {
+    width: 25vw;
+  }
+
+
+  #chichen {
+    left: 2%;
+    top: 13%;
+    width: 23vw;
+  }
+
+
+  #colosseum {
+    left: 38%;
+    top: 5%;
+    width: 29vw;
+  }
+
+
+  #taj {
+    right: 1%;
+    top: 23%;
+    width: 30vw;
+  }
+
+
+  #petra {
+    left: 5%;
+    top: 42%;
+    width: 28vw;
+  }
+
+
+  #greatwall {
+    right: 2%;
+    bottom: 28%;
+    width: 34vw;
+  }
+
+
+  #christ {
+    left: 8%;
+    bottom: 6%;
+    width: 25vw;
+  }
+
+
+  #machu {
+    left: 43%;
+    bottom: 4%;
+    width: 35vw;
+  }
+
+
+  .cloud-front-1,
+  .cloud-front-2 {
+
+    height: 150px;
+
+  }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+   Stops movement when device is configured
+   to reduce motion
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .wonder,
+  .cloud {
+
+    animation: none !important;
+
+  }
+
+}
+
