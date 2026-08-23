@@ -1,256 +1,284 @@
 /* =========================================
-   ARTGRID CLOUD
-   Seven Wonders Interactive Animation
+   SEVEN WONDERS — FLOAT ACROSS THE SKY
 ========================================= */
 
 const wonders = document.querySelectorAll(".wonder");
 
-let mouseX = 0;
-let mouseY = 0;
 
-let targetX = 0;
-let targetY = 0;
+/* =========================================
+   SETTINGS
+========================================= */
+
+const wonderSettings = {
+  chichen: {
+    speed: 0.018,
+    delay: 0,
+    amplitude: 18,
+    phase: 0
+  },
+
+  colosseum: {
+    speed: 0.022,
+    delay: 1800,
+    amplitude: 24,
+    phase: 1.1
+  },
+
+  petra: {
+    speed: 0.017,
+    delay: 3600,
+    amplitude: 20,
+    phase: 2.3
+  },
+
+  taj: {
+    speed: 0.020,
+    delay: 5400,
+    amplitude: 22,
+    phase: 3.2
+  },
+
+  christ: {
+    speed: 0.016,
+    delay: 7200,
+    amplitude: 16,
+    phase: 4.4
+  },
+
+  machu: {
+    speed: 0.019,
+    delay: 9000,
+    amplitude: 21,
+    phase: 5.1
+  },
+
+  greatwall: {
+    speed: 0.015,
+    delay: 10800,
+    amplitude: 25,
+    phase: 6.2
+  }
+};
 
 
 /* =========================================
-   DESKTOP MOUSE PARALLAX
+   STATE
 ========================================= */
 
-document.addEventListener("mousemove", (event) => {
+const startTime = performance.now();
 
-  targetX =
-    (event.clientX / window.innerWidth - 0.5);
 
-  targetY =
-    (event.clientY / window.innerHeight - 0.5);
+wonders.forEach((wonder) => {
+
+  const id = wonder.id;
+
+  const settings =
+    wonderSettings[id] || {
+      speed: 0.018,
+      delay: 0,
+      amplitude: 20,
+      phase: 0
+    };
+
+
+  wonder.dataset.speed = settings.speed;
+  wonder.dataset.delay = settings.delay;
+  wonder.dataset.amplitude = settings.amplitude;
+  wonder.dataset.phase = settings.phase;
 
 });
 
 
 /* =========================================
-   SMOOTH MOVEMENT
+   ANIMATE
 ========================================= */
 
-function animateParallax() {
+function animate(timestamp) {
 
-  mouseX +=
-    (targetX - mouseX) * 0.04;
+  const elapsed =
+    timestamp - startTime;
 
-  mouseY +=
-    (targetY - mouseY) * 0.04;
+
+  const screenWidth =
+    window.innerWidth;
 
 
   wonders.forEach((wonder) => {
 
-    const depth =
-      Number(wonder.dataset.depth) || 0.5;
+    if (
+      wonder.style.display === "none"
+    ) {
+      return;
+    }
 
 
-    const moveX =
-      mouseX * 35 * depth;
-
-    const moveY =
-      mouseY * 25 * depth;
+    const delay =
+      Number(wonder.dataset.delay);
 
 
-    wonder.style.marginLeft =
-      moveX + "px";
-
-    wonder.style.marginTop =
-      moveY + "px";
-
-  });
+    const speed =
+      Number(wonder.dataset.speed);
 
 
-  requestAnimationFrame(
-    animateParallax
-  );
-
-}
+    const amplitude =
+      Number(wonder.dataset.amplitude);
 
 
-animateParallax();
+    const phase =
+      Number(wonder.dataset.phase);
 
 
-/* =========================================
-   RESET WHEN MOUSE LEAVES
-========================================= */
-
-document.addEventListener(
-  "mouseleave",
-  () => {
-
-    targetX = 0;
-    targetY = 0;
-
-  }
-);
+    const width =
+      wonder.offsetWidth || 250;
 
 
-/* =========================================
-   PHONE / TABLET TILT
-========================================= */
+    /*
+      Travel distance includes space
+      beyond both sides of the screen.
+    */
 
-function activateDeviceTilt() {
-
-  window.addEventListener(
-    "deviceorientation",
-    (event) => {
-
-      if (
-        event.gamma === null ||
-        event.beta === null
-      ) {
-        return;
-      }
+    const travelDistance =
+      screenWidth + width * 2;
 
 
-      /*
-        gamma = left/right tilt
-        beta  = front/back tilt
-      */
+    /*
+      Keep each wonder offscreen
+      until its starting delay.
+    */
 
-      const gamma =
-        Math.max(
-          -30,
-          Math.min(
-            30,
-            event.gamma
-          )
-        );
+    if (elapsed < delay) {
 
+      wonder.style.transform =
+        `translate3d(${-width * 1.3}px, 0px, 0)`;
 
-      const beta =
-        Math.max(
-          -30,
-          Math.min(
-            30,
-            event.beta - 45
-          )
-        );
-
-
-      targetX =
-        gamma / 60;
-
-      targetY =
-        beta / 60;
+      return;
 
     }
-  );
-
-}
 
 
-/* =========================================
-   iPHONE / iPAD MOTION PERMISSION
-========================================= */
-
-function requestMotionPermission() {
-
-  if (
-    typeof DeviceOrientationEvent !==
-      "undefined" &&
-
-    typeof DeviceOrientationEvent
-      .requestPermission ===
-      "function"
-  ) {
-
-    DeviceOrientationEvent
-      .requestPermission()
-
-      .then((permissionState) => {
-
-        if (
-          permissionState ===
-          "granted"
-        ) {
-
-          activateDeviceTilt();
-
-        }
-
-      })
-
-      .catch(() => {
-
-        /* Site still works without tilt */
-
-      });
-
-  }
-
-  else {
-
-    activateDeviceTilt();
-
-  }
-
-}
+    const localTime =
+      elapsed - delay;
 
 
-/* =========================================
-   FIRST USER TOUCH
+    /*
+      Horizontal progress.
+      When it reaches the far right,
+      it loops back to the left.
+    */
 
-   iOS requires user interaction before
-   motion access can be requested.
-========================================= */
-
-document.addEventListener(
-  "touchstart",
-  requestMotionPermission,
-  {
-    once: true
-  }
-);
-
-
-/* =========================================
-   SUBTLE RANDOM DRIFT
-
-   Gives the buildings a slightly less
-   mechanical floating feeling.
-========================================= */
-
-function addNaturalDrift() {
-
-  wonders.forEach((wonder) => {
-
-    const randomX =
-      (Math.random() - 0.5) * 5;
-
-    const randomY =
-      (Math.random() - 0.5) * 4;
-
-
-    wonder.style.marginLeft =
+    const progress =
       (
-        parseFloat(
-          wonder.style.marginLeft
-        ) || 0
-      )
-      + randomX
-      + "px";
+        localTime *
+        speed
+      ) %
+      travelDistance;
 
 
-    wonder.style.marginTop =
-      (
-        parseFloat(
-          wonder.style.marginTop
-        ) || 0
+    const x =
+      -width * 1.3 +
+      progress;
+
+
+    /*
+      Gentle vertical floating.
+    */
+
+    const y =
+      Math.sin(
+        localTime * 0.0012 +
+        phase
+      ) *
+      amplitude;
+
+
+    /*
+      Tiny rotation makes the
+      islands feel less mechanical.
+    */
+
+    const rotation =
+      Math.sin(
+        localTime * 0.0007 +
+        phase
+      ) *
+      1.1;
+
+
+    /*
+      Very subtle scale pulse.
+    */
+
+    const scale =
+      1 +
+      Math.sin(
+        localTime * 0.0005 +
+        phase
+      ) *
+      0.015;
+
+
+    wonder.style.transform =
+      `
+      translate3d(
+        ${x}px,
+        ${y}px,
+        0
       )
-      + randomY
-      + "px";
+      rotate(${rotation}deg)
+      scale(${scale})
+      `;
 
   });
 
+
+  requestAnimationFrame(animate);
+
 }
 
 
-/* Small variation every few seconds */
+requestAnimationFrame(animate);
 
-setInterval(
-  addNaturalDrift,
-  5000
+
+/* =========================================
+   HIDE MISSING IMAGES
+========================================= */
+
+document
+  .querySelectorAll(".wonder img")
+  .forEach((image) => {
+
+    image.addEventListener(
+      "error",
+      function() {
+
+        const parent =
+          image.closest(".wonder");
+
+
+        if (parent) {
+          parent.style.display =
+            "none";
+        }
+
+      }
+    );
+
+  });
+
+
+/* =========================================
+   RESIZE
+========================================= */
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    /*
+      requestAnimationFrame automatically
+      uses the new screen width on the
+      next frame.
+    */
+
+  }
 );
