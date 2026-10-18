@@ -1,111 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Seven Wonders</title>
-
-  <!-- v5 forces the browser to load the newest CSS -->
-  <link rel="stylesheet" href="style.css?v=5">
-</head>
-
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5eef4"><meta name="description" content="ARTGRID — an art, architecture, and objects studio. Explore the Seven Wonders floating in a pastel sky.">
+<title>ARTGRID — Art, Architecture & Objects</title><link rel="stylesheet" href="style.css?v=6"></head>
 <body>
-
-  <div class="scene" id="scene">
-
-    <div class="sky"></div>
-    <div class="sun"></div>
-    <div class="clouds-bg"></div>
-
-
-    <!-- CHICHEN ITZA -->
-
-    <div class="wonder" id="chichen">
-      <img
-        src="chichen-itza.PNG"
-        alt=""
-        onerror="this.parentElement.style.display='none'"
-      >
-    </div>
-
-
-    <!-- COLOSSEUM -->
-
-    <div class="wonder" id="colosseum">
-      <img
-        src="colosseum.PNG"
-        alt=""
-        onerror="this.parentElement.style.display='none'"
-      >
-    </div>
-
-
-    <!-- PETRA -->
-
-    <div class="wonder" id="petra">
-      <img
-        src="petra.PNG"
-        alt=""
-        onerror="this.parentElement.style.display='none'"
-      >
-    </div>
-
-
-    <!-- TAJ MAHAL -->
-
-    <div class="wonder" id="taj">
-      <img
-        src="taj-mahal.PNG"
-        alt=""
-        onerror="this.parentElement.style.display='none'"
-      >
-    </div>
-
-
-    <!-- CHRIST THE REDEEMER -->
-
-    <div class="wonder" id="christ">
-      <img
-        src="christ-redeemer.PNG"
-        alt=""
-        onerror="this.parentElement.style.display='none'"
-      >
-    </div>
-
-
-    <!-- MACHU PICCHU -->
-
-    <div class="wonder" id="machu">
-      <img
-        src="machu-picchu.PNG"
-        alt=""
-        onerror="this.parentElement.style.display='none'"
-      >
-    </div>
-
-
-    <!-- GREAT WALL OF CHINA -->
-
-    <div class="wonder" id="greatwall">
-      <img
-        src="great-wall.PNG"
-        alt=""
-        onerror="this.parentElement.style.display='none'"
-      >
-    </div>
-
-  </div>
-
-
-  <!-- v5 forces the browser to load newest JS -->
-  <script src="animation.js?v=5"></script>
-
-</body>
-
-</html>
+<header class="site-header"><a class="wordmark" href="#top" aria-label="ARTGRID home"><span>ART</span><span>GRID</span><i>®</i></a><nav aria-label="Main navigation"><a href="#portfolio">Portfolio</a><a href="#wonders">Seven Wonders</a><a href="#shop">Shop</a></nav><a class="header-cta" href="#shop">Explore objects <span aria-hidden="true">↗</span></a></header>
+<main id="top"><section class="intro" id="portfolio"><div class="intro-copy"><span class="eyebrow">A CREATIVE STUDIO FOR TOMORROW</span><h1>Imagine a<br><em>softer world.</em></h1><p>Art, architecture and collectible objects shaped by curiosity, play and a little wonder.</p><a class="pill" href="#wonders">Explore the wonders <span aria-hidden="true">↘</span></a></div><div class="orb" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orb-core"></span></div><span class="intro-note">ART / SPACE / OBJECTS — EST. 2013</span></section>
+<section class="explorer" id="wonders" aria-labelledby="wonders-title"><div class="section-heading"><div><span class="eyebrow">THE WORLD, REIMAGINED</span><h2 id="wonders-title">Seven little <em>wonders.</em></h2></div><p>Seven icons. A world of possibilities.<br>Tap a floating landmark to discover its collectible.</p></div><div class="sky-stage"><div class="sky-sun" aria-hidden="true"></div><div class="cloud cloud-one" aria-hidden="true"></div><div class="cloud cloud-two" aria-hidden="true"></div><div class="cloud cloud-three" aria-hidden="true"></div><div class="wonder-field" id="wonder-field">
+<button class="wonder" id="chichen" data-title="Chichén Itzá" data-location="Mexico" aria-label="Explore Chichén Itzá"><img src="chichen-itza.PNG" alt=""></button>
+<button class="wonder" id="colosseum" data-title="Colosseum" data-location="Italy" aria-label="Explore the Colosseum"><img src="colosseum.PNG" alt=""></button>
+<button class="wonder" id="petra" data-title="Petra" data-location="Jordan" aria-label="Explore Petra"><img src="petra.PNG" alt=""></button>
+<button class="wonder" id="taj" data-title="Taj Mahal" data-location="India" aria-label="Explore the Taj Mahal"><img src="taj-mahal.PNG" alt=""></button>
+<button class="wonder" id="christ" data-title="Christ the Redeemer" data-location="Brazil" aria-label="Explore Christ the Redeemer"><img src="christ-redeemer.PNG" alt=""></button>
+<button class="wonder" id="machu" data-title="Machu Picchu" data-location="Peru" aria-label="Explore Machu Picchu"><img src="machu-picchu.PNG" alt=""></button>
+<button class="wonder" id="greatwall" data-title="Great Wall of China" data-location="China" aria-label="Explore the Great Wall of China"><img src="great-wall.PNG" alt=""></button>
+</div><div class="stage-caption"><span>01 / 07 — FLOATING ARCHITECTURE</span><span>SELECT A WONDER ✳</span></div></div></section>
+<section class="shop-section" id="shop"><div><span class="eyebrow">SMALL OBJECTS, BIG IMAGINATIONS</span><h2>Collect a piece<br>of <em>wonder.</em></h2><p>Seven Wonders miniature keychain charms, imagined in soft pastel pink, yellow and lilac. Designed for printing, gifting and collecting.</p><span class="availability">Products in development · Coming soon</span></div><div class="swatches" aria-label="Planned pastel colour palette"><span class="swatch pink"></span><span class="swatch yellow"></span><span class="swatch purple"></span><span class="swatch-caption">PINK / BUTTER / LILAC</span></div></section>
+<section class="vote-section"><span class="eyebrow">WHAT'S NEXT?</span><h2>What will the next<br><em>seven wonders</em> be?</h2><p>Nominate the contemporary wonders that deserve to define our time. Voting opens January 7, 2027.</p><a class="pill dark" href="https://wttc.org/news/7-contemporary-wonders" target="_blank" rel="noopener noreferrer">Learn about nominations ↗</a></section>
+</main><footer><a class="wordmark" href="#top"><span>ART</span><span>GRID</span></a><span>IMAGINE MORE. MAKE MORE.</span><span>© ARTGRID 2026</span></footer>
+<dialog class="wonder-dialog" id="wonder-dialog" aria-labelledby="dialog-title"><button class="dialog-close" id="dialog-close" aria-label="Close">×</button><span class="eyebrow">SEVEN WONDERS COLLECTION</span><h2 id="dialog-title"></h2><p id="dialog-location"></p><div class="dialog-colours"><span class="swatch pink"></span><span class="swatch yellow"></span><span class="swatch purple"></span></div><p>A miniature collectible keychain charm, planned in pink, butter yellow and lilac.</p><span class="availability">Shopify listing coming soon · Not yet available for purchase</span></dialog>
+<script src="animation.js?v=6" defer></script></body></html>
