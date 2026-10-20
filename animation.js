@@ -20,6 +20,49 @@
     petra: 'Canyon Reveal',
     taj: 'Lotus Court'
   };
+  // Monument dates and stories checked against the linked heritage authorities.
+  const history = {
+    "colosseum": {
+      "date": "Completed 80 CE",
+      "description": "Bring a little Roman grandeur along for the ride with the Colosseum’s iconic tiers of arches. Its opening games in 80 CE lasted 100 days, giving this ancient arena a debut as spectacular as its architecture.",
+      "source": "https://colosseo.it/en/event/blood-and-the-arena/"
+    },
+    "chichen": {
+      "date": "El Castillo built c. 9th–12th centuries CE",
+      "description": "Step into Maya history with El Castillo, the striking pyramid at the heart of Chichén Itzá. Hidden inside is a red jaguar throne with jade inlays, a remarkable detail tucked beneath those famous stepped terraces.",
+      "source": "https://lugares.inah.gob.mx/es/node/6131",
+      "dateSource": "https://www.inah.gob.mx/foto-del-dia/el-castillo-de-chichen-itza-arquitectura-astronomia-y-tiempo"
+    },
+    "christ": {
+      "date": "Built 1926–1931",
+      "description": "Take Rio’s warmest welcome wherever you go with Christ the Redeemer’s unmistakable open arms. During construction, people helping assemble its soapstone mosaic wrote loved ones’ names on the backs of the tiles, leaving personal stories beneath the surface.",
+      "source": "https://ns1.santuariocristoredentor.com.br/noticias/a-historia-de-construcao-do-cristo-redentor-ainda-nao-acabou",
+      "dateSource": "https://www.en.santuariocristoredentor.com.br/guias"
+    },
+    "greatwall": {
+      "date": "Many surviving sections built 1368–1644 CE",
+      "description": "A little stretch of a very big adventure, the Great Wall winds across China’s mountain landscapes. It was never a single building project: successive Chinese empires developed this vast defensive network over roughly 2,000 years.",
+      "source": "https://whc.unesco.org/en/list/438/"
+    },
+    "machu": {
+      "date": "Built in the 15th century CE",
+      "description": "Carry a little high-altitude wonder with Machu Picchu’s mountain-hugging terraces. Inca planners fitted around 200 structures onto its steep ridge, carefully separating farming areas from homes in a remarkable city built to work with the landscape.",
+      "source": "https://whc.unesco.org/en/list/274/"
+    },
+    "petra": {
+      "date": "Treasury carved c. 1st century BCE–1st century CE",
+      "description": "Bring a touch of desert adventure along with Petra’s Treasury, carved into rose-coloured sandstone. Its name comes from a local legend that a pharaoh hid treasure in the urn above the façade, giving this ancient landmark an extra layer of mystery.",
+      "source": "https://pdtra.gov.jo/EN/ListDetails/Historical_Location/1234/2"
+    },
+    "taj": {
+      "date": "Mausoleum built 1632–1648; complex completed 1653",
+      "description": "Add a little marble-daydream elegance with the Taj Mahal’s graceful dome and balanced silhouette. Emperor Shah Jahan commissioned this extraordinary mausoleum in memory of Mumtaz Mahal, bringing craftspeople from across his empire, Central Asia and Iran.",
+      "source": "https://whc.unesco.org/en/list/252/"
+    }
+  };
+  const builtDate = document.getElementById('dialog-built');
+  const description = document.getElementById('dialog-description');
+  const historySource = document.getElementById('dialog-history-source');
   const designCrop = document.getElementById('dialog-design-crop');
   const designImage = document.getElementById('dialog-design-image');
   const designName = document.getElementById('dialog-design-name');
@@ -95,6 +138,13 @@
         designCrop.dataset.design = el.id;
         designImage.alt = `${el.dataset.title} keychain charm design preview: ${designs[el.id]}.`;
         designName.textContent = designs[el.id];
+      }
+      const story = history[el.id];
+      if (builtDate && description && historySource && story) {
+        builtDate.textContent = story.date;
+        description.textContent = story.description;
+        historySource.href = story.source;
+        historySource.setAttribute('aria-label', `History source for ${el.dataset.title}`);
       }
       if (!dialog.open) dialog.showModal();
       updateMotionState();

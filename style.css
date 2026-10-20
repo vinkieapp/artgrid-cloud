@@ -10,7 +10,7 @@
 .sky-stage[data-motion="playing"][data-interaction-paused="false"] .cloud{animation-play-state:running}
 @keyframes cloudBreathe{from{transform:translateY(10px) scale(1)}to{transform:translateY(-15px) scale(1.03)}}
 
-/* Approved charm concept previews. The source sheet is displayed unchanged. */
+/* Approved charm concept previews. The original source sheet is retained unchanged. */
 .collection-preview{flex:1;min-width:0;max-width:620px;margin:0}
 .collection-preview img{display:block;width:100%;height:auto;border-radius:16px}
 .collection-preview figcaption,.dialog-design figcaption{font-size:11px;line-height:1.5;color:#625b6a;margin-top:12px}
@@ -64,3 +64,11 @@
 
 /* Clip drifting artwork without making the sky an internally scrollable pane. */
 .sky-stage{overflow:clip}
+
+.history-source{display:inline-flex;align-items:center;min-height:44px;font-size:12px;text-decoration:underline;text-underline-offset:3px}
+
+.wonder-dialog .history-date{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px}
+
+/* Exclude only the source sheet’s old production-note footer, retaining every charm label. */
+.collection-art{aspect-ratio:1536/960;overflow:hidden;border-radius:16px}
+.collection-art img{border-radius:0}
