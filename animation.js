@@ -58,9 +58,10 @@
     updateMotionState();
     if (selectionStatus) selectionStatus.textContent = 'The wonders are paused. Choose a landmark to view its charm.';
     const visibleWonders = wonders.filter(el => !el.disabled);
-    // Position first, then let focus scroll the selected landmark into view.
+    // Position first, then scroll the scene rather than its clipped interior.
     visibleWonders.forEach((el, index) => stillLayout(el, index, visibleWonders.length, field.clientWidth, field.clientHeight));
-    visibleWonders[0]?.focus();
+    scene.scrollIntoView({ block: 'start', behavior: 'auto' });
+    visibleWonders[0]?.focus({ preventScroll: true });
   });
   const preferenceChanged = () => {
     motionOverride = null;
