@@ -9,3 +9,39 @@
 .sky-stage .cloud-three{animation-delay:-8s}
 .sky-stage[data-motion="playing"][data-interaction-paused="false"] .cloud{animation-play-state:running}
 @keyframes cloudBreathe{from{transform:translateY(10px) scale(1)}to{transform:translateY(-15px) scale(1.03)}}
+
+/* Approved charm concept previews. The source sheet is displayed unchanged. */
+.collection-preview{flex:1;min-width:0;max-width:620px;margin:0}
+.collection-preview img{display:block;width:100%;height:auto;border-radius:16px}
+.collection-preview figcaption,.dialog-design figcaption{font-size:11px;line-height:1.5;color:#625b6a;margin-top:12px}
+.shop-section>div:first-child{flex:0 1 390px}
+.shop-section .product-price,.wonder-dialog .product-price{font-size:22px;font-weight:700;line-height:1.4;color:var(--ink);margin:20px 0 16px}
+.product-price span{font-size:12px;font-weight:400}
+.shop-section .order-note,.wonder-dialog .order-note{font-size:12px;line-height:1.5;margin:12px 0 0}
+.wonder-dialog{width:480px;max-width:calc(100% - 32px);max-height:calc(100dvh - 32px);overflow:auto;padding:32px}
+.wonder-dialog h2{font-size:clamp(28px,7vw,42px);overflow-wrap:anywhere}
+.dialog-close{min-width:44px;min-height:44px}
+.dialog-design{margin:24px 0}
+.design-crop{position:relative;overflow:hidden;aspect-ratio:var(--design-ratio,4/3);border-radius:14px;background:#fffaf3}
+.design-crop img{position:absolute;display:block;width:var(--sheet-width,100%);max-width:none;height:auto;left:var(--sheet-left,0);top:var(--sheet-top,0)}
+.dialog-design figcaption strong,.dialog-design figcaption span{display:block}
+.dialog-design figcaption strong{font-size:14px;color:var(--ink);margin-bottom:3px}
+.design-crop[data-design="chichen"]{--design-ratio:400/354;--sheet-width:384.000000%;--sheet-left:-5.000000%;--sheet-top:-29.378531%}
+.design-crop[data-design="christ"]{--design-ratio:328/349;--sheet-width:468.292683%;--sheet-left:-126.524390%;--sheet-top:-30.659026%}
+.design-crop[data-design="colosseum"]{--design-ratio:412/309;--sheet-width:372.815534%;--sheet-left:-184.466019%;--sheet-top:-47.896440%}
+.design-crop[data-design="greatwall"]{--design-ratio:387/365;--sheet-width:396.899225%;--sheet-left:-296.899225%;--sheet-top:-26.301370%}
+.design-crop[data-design="machu"]{--design-ratio:485/377;--sheet-width:316.701031%;--sheet-left:-14.639175%;--sheet-top:-137.931034%}
+.design-crop[data-design="petra"]{--design-ratio:339/386;--sheet-width:453.097345%;--sheet-left:-175.811209%;--sheet-top:-132.642487%}
+.design-crop[data-design="taj"]{--design-ratio:512/345;--sheet-width:300.000000%;--sheet-left:-193.750000%;--sheet-top:-160.000000%}
+@media(max-width:700px){.collection-preview{margin-top:32px}.wonder-dialog{padding:24px}.dialog-design{margin:18px 0}}
+
+/* A real, accessible action replaces the former decorative stage caption. */
+.stage-caption{bottom:18px}
+.wonder-cta,.preorder-link{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:52px;padding:14px 22px;border:2px solid #fff8fc;border-radius:32px;background:#40334f;color:#fff;font-size:15px;font-weight:700;letter-spacing:0;text-transform:none;box-shadow:0 8px 22px #40334f35;cursor:pointer;touch-action:manipulation}
+.wonder-cta{margin-left:auto;pointer-events:auto}
+.wonder-cta:hover,.preorder-link:hover{background:#594368}
+.wonder-cta:focus-visible,.preorder-link:focus-visible{outline:3px solid #6c4986;outline-offset:4px}
+.preorder-link{width:100%;margin-top:18px;box-shadow:none}
+.preorder-link[hidden]{display:none}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media(max-width:700px){.wonder-cta{width:100%;min-height:54px;font-size:16px}.stage-caption{bottom:16px}}

@@ -10,11 +10,26 @@
     machu: { duration: 56000, start: .45, bob: 21, phase: 5.2 },
     greatwall: { duration: 65000, start: .76, bob: 24, phase: 6.1 }
   };
+  // Approved concept-sheet artwork; no product photography or print-ready claim.
+  const designs = {
+    chichen: 'Shadow Cube',
+    christ: 'Halo Over Rio',
+    colosseum: 'Arena Cutaway',
+    greatwall: 'Winding Ridge',
+    machu: 'Terrace Island',
+    petra: 'Canyon Reveal',
+    taj: 'Lotus Court'
+  };
+  const designCrop = document.getElementById('dialog-design-crop');
+  const designImage = document.getElementById('dialog-design-image');
+  const designName = document.getElementById('dialog-design-name');
   const field = document.querySelector('.wonder-field');
   const scene = document.querySelector('.sky-stage');
   const dialog = document.getElementById('wonder-dialog');
   const closeButton = document.getElementById('dialog-close');
   const toggle = document.getElementById('motion-toggle');
+  const chooseWonder = document.getElementById('choose-wonder');
+  const selectionStatus = document.getElementById('selection-status');
   if (!field || !scene || !dialog || !closeButton) return;
   const wonders = [...field.querySelectorAll('.wonder')].filter(el => settings[el.id]);
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -37,6 +52,15 @@
   toggle?.addEventListener('click', () => {
     motionOverride = !motionEnabled();
     updateMotionState();
+  });
+  chooseWonder?.addEventListener('click', () => {
+    motionOverride = false;
+    updateMotionState();
+    if (selectionStatus) selectionStatus.textContent = 'The wonders are paused. Choose a landmark to view its charm.';
+    const visibleWonders = wonders.filter(el => !el.disabled);
+    // Position first, then let focus scroll the selected landmark into view.
+    visibleWonders.forEach((el, index) => stillLayout(el, index, visibleWonders.length, field.clientWidth, field.clientHeight));
+    visibleWonders[0]?.focus();
   });
   const preferenceChanged = () => {
     motionOverride = null;
@@ -64,6 +88,11 @@
       opener = el;
       document.getElementById('dialog-title').textContent = el.dataset.title;
       document.getElementById('dialog-location').textContent = el.dataset.location;
+      if (designCrop && designImage && designName) {
+        designCrop.dataset.design = el.id;
+        designImage.alt = `${el.dataset.title} keychain charm design preview: ${designs[el.id]}.`;
+        designName.textContent = designs[el.id];
+      }
       if (!dialog.open) dialog.showModal();
       updateMotionState();
     });
@@ -85,7 +114,7 @@
 
   function stillLayout(el, index, count, width, height) {
     // Do not freeze the animated entrance positions offscreen.
-    const gap = 12, top = 64, bottom = 48, rows = Math.ceil(count / 2);
+    const gap = 12, top = 64, bottom = 96, rows = Math.ceil(count / 2);
     const cellWidth = Math.max(1, (width - gap * 3) / 2);
     const cellHeight = Math.max(1, (height - top - bottom - gap * (rows - 1)) / rows);
     const elWidth = el.offsetWidth || 200;
