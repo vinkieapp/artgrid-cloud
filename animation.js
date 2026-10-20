@@ -60,6 +60,8 @@
     const visibleWonders = wonders.filter(el => !el.disabled);
     // Position first, then scroll the scene rather than its clipped interior.
     visibleWonders.forEach((el, index) => stillLayout(el, index, visibleWonders.length, field.clientWidth, field.clientHeight));
+    scene.scrollTop = 0;
+    scene.scrollLeft = 0;
     scene.scrollIntoView({ block: 'start', behavior: 'auto' });
     visibleWonders[0]?.focus({ preventScroll: true });
   });

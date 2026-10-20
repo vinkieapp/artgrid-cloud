@@ -61,3 +61,6 @@
 .wonder-cta{min-width:254px;min-height:60px;padding:16px 24px;font-size:16px;border-color:#fff;box-shadow:0 9px 28px #40334f45}
 .wonder-cta .cta-arrow{display:block;flex:none;width:28px;height:28px;padding:4px;border-radius:50%;background:#f6e9f2;color:#40334f}
 @media(max-width:700px){.wonder-cta{min-width:0;min-height:60px;font-size:17px}.sky-stage .cloud{min-width:150px}.sky-stage .cloud-three{left:25%;width:50%}.sky-stage .cloud-seven{left:32%;width:50%}}
+
+/* Clip drifting artwork without making the sky an internally scrollable pane. */
+.sky-stage{overflow:clip}
