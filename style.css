@@ -72,3 +72,19 @@
 /* Exclude only the source sheet’s old production-note footer, retaining every charm label. */
 .collection-art{aspect-ratio:1536/960;overflow:hidden;border-radius:16px}
 .collection-art img{border-radius:0}
+
+
+/* Art Studio entry points preserve the portfolio and objects collection. */
+.art-studio{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:60px clamp(25px,10vw,150px);background:linear-gradient(120deg,#efe5f8,#f9e9e4)}
+.art-studio h2{font:500 clamp(38px,4.5vw,64px)/1.06 "Space Grotesk",sans-serif;letter-spacing:-.06em;margin:18px 0}
+.art-studio h2 em{font-style:normal;color:#795693}
+.art-studio p{max-width:480px;font-size:15px;line-height:1.8;color:#625b6a;margin:0}
+.studio-actions{display:flex;flex-direction:column;gap:14px;min-width:260px}
+.studio-link{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:60px;padding:17px 24px;border:2px solid #40334f;border-radius:36px;font-size:16px;font-weight:700}
+.studio-apollo{background:#40334f;color:#fff;box-shadow:0 8px 24px #40334f25}
+.studio-athena{background:#fff9ef;color:#40334f}
+.studio-link:hover{background:#654d77;color:#fff}
+.studio-link:focus-visible,.site-header nav a:focus-visible{outline:3px solid #795693;outline-offset:5px}
+.studio-note{font-size:12px;color:#625b6a;text-align:center}
+.site-header nav a{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:700px){.site-header{height:auto;min-height:88px;padding:12px 17px;gap:4px 16px}.site-header nav{flex-wrap:wrap;gap:0 16px}.art-studio{display:block;padding:48px 26px}.studio-actions{min-width:0;margin-top:26px}.studio-link{white-space:normal}.art-studio .eyebrow{line-height:1.7}}
