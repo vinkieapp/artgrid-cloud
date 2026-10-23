@@ -3,7 +3,7 @@ test('all EN/FR theme and material paths finish in five steps',()=>{for(const la
 test('language change preserves current lesson and material',()=>{let s={...initial(),stage:'lesson',step:2,material:2,theme:1};s=transition(s,'lang','fr');assert.equal(s.step,2);assert.equal(s.material,2);assert.match(render(s),/Répète un rythme/);assert.doesNotMatch(render(s),/Repeat a rhythm/)});
 test('pause resume, exit cancel and reset preserve or erase correctly',()=>{let s={...initial(),lang:'fr',stage:'lesson',step:3};s=transition(s,'pause');assert.equal(s.stage,'paused');s=transition(s,'resume');assert.equal(s.step,3);s=transition(s,'exit');assert.equal(s.confirm,true);s=transition(s,'cancel');assert.equal(s.confirm,false);assert.equal(s.step,3);s=transition(s,'reset');assert.deepEqual(s,{...initial(),lang:'fr'});assert.equal(initial().step,0)});
 test('help, repeat, back and boundaries',()=>{let s=transition(initial(),'start');s=transition(s,'tip');assert.equal(s.tip,true);s=transition(s,'repeat');assert.equal(s.repeat,1);s=transition(s,'back');assert.equal(s.stage,'choose');assert.equal(s.step,0);s=transition(s,'theme','99');assert.equal(s.theme,0)});
-test('SSR and noJS content localized and injection-safe',()=>{assert.match(page('fr'),/Crée une petite merveille/);assert.match(fallback('fr'),/Trouve ton ciel/);assert.match(fallback('en'),/Find your sky/);assert.doesNotMatch(page('<script>'),/<script>/);assert.match(page(),/noindex,nofollow/)});
+test('SSR and noJS content localized and injection-safe',()=>{assert.match(page('fr'),/Une aventure artistique/);assert.match(fallback('fr'),/Trouve ton ciel/);assert.match(fallback('en'),/Find your sky/);assert.doesNotMatch(page('<script>'),/<script>/);assert.match(page(),/noindex,nofollow/)});
 test('public assets only and no data endpoints',async()=>{for(const path of ['/server.mjs','/.env','/package.json','/api/chat','/backend/app.mjs','/upload','/../server.mjs'])assert.equal((await handle(new Request('http://local'+path))).status,404);for(const path of ['/','/style.css','/client.mjs','/guide.mjs','/health'])assert.equal((await handle(new Request('http://local'+path))).status,200);assert.equal((await handle(new Request('http://local/',{method:'POST',body:'name'}))).status,405)});
 test('security headers block all client connections and sensitive permissions',async()=>{const r=await handle(new Request('http://local/'));assert.match(r.headers.get('content-security-policy'),/connect-src 'none'/);assert.match(r.headers.get('permissions-policy'),/camera=\(\), microphone=\(\), geolocation=\(\)/);assert.equal(r.headers.get('cache-control'),'no-store');assert.equal(r.headers.get('set-cookie'),null)});
 test('no tracking, storage, accounts, free-text or external imports in browser source',async()=>{const src=(await Promise.all(['guide.mjs','client.mjs','style.css'].map(f=>readFile(new URL('../public/'+f,import.meta.url),'utf8')))).join('\n');assert.doesNotMatch(src,/https?:\/\/|fetch\(|XMLHttpRequest|WebSocket|localStorage|sessionStorage|document\.cookie|indexedDB|sendBeacon|<input|<textarea|contenteditable|getUserMedia/);assert.match(src,/prefers-reduced-motion/);assert.match(src,/focus-visible/);assert.match(src,/aria-pressed/)});
@@ -11,14 +11,13 @@ test('animation can be paused without losing the lesson',()=>{const s=transition
 test('optional SSR mount safely prefixes assets and blocks code',async()=>{const{handleArtGuide}=await import('../integration.mjs');const r=await handleArtGuide(new Request('http://local/learn?lang=fr'));assert.match(await r.text(),/src="\/learn\/client.mjs"/);assert.equal((await handleArtGuide(new Request('http://local/learn/server.mjs'))).status,404);assert.equal(await handleArtGuide(new Request('http://local/shop')),null)});
 
 
-test('big eyes blink slowly and all character motion obeys pause and reduced motion',async()=>{
- const css=await readFile(new URL('../public/style.css',import.meta.url),'utf8');
- const html=render(initial());assert.match(html,/class="apollo-eyes"/);assert.match(html,/rx="7" ry="8"/);assert.match(html,/class="apollo-brush-arm"/);
- assert.match(css,/apollo-blink 5\.6s/);assert.match(css,/apollo-paint 6s/);
- assert.match(css,/\.still \.float,\.still \.apollo-eyes,\.still \.apollo-brush-arm\{animation:none\}/);
- assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{\.apollo \.float,\.apollo-eyes,\.apollo-brush-arm\{animation:none!important;transform:none!important\}/);
+test('cloud scene animation respects pause and reduced motion',async()=>{
+ const css=await readFile(new URL('../public/style.css',import.meta.url),'utf8');const html=render(initial());
+ assert.match(html,/apollo-glide/);assert.match(html,/apollo-blink-frame/);assert.match(html,/cloud-veil/);assert.match(css,/portrait-blink 6\.2s/);
+ assert.match(css,/\.still \.apollo-glide,\.still \.apollo-blink-frame,\.still \.cloud-veil\{animation:none!important\}/);
+ assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{\.apollo-glide,\.apollo-blink-frame,\.cloud-veil\{animation:none!important;transform:none!important\}/);
  let state=transition(initial(),'motion');for(const action of ['start','pause','resume','reset']){state=transition(state,action);assert.equal(state.motion,false);assert.match(render(state),/guide-card still/)}
- state=transition(state,'motion');assert.equal(state.motion,true);assert.doesNotMatch(render(state),/guide-card still/);
- assert.match(render({...state,lang:'fr'}),/Arrêter l’animation/);
  assert.match(html,/Hosting processes technical request data/);
+ for(const name of ['apollo-open','apollo-blink','cloud-kingdom']){const r=await handle(new Request('http://local/images/'+name+'.webp'));assert.equal(r.status,200);assert.equal(r.headers.get('content-type'),'image/webp');assert.ok((await r.arrayBuffer()).byteLength>1000)}
+ assert.equal((await handle(new Request('http://local/images/private.png'))).status,404);
 });

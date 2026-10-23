@@ -45,5 +45,7 @@ preview/ARTGRID-Apollo-art-guide-design.png shows the Cloud Garden shading step.
 Deploy only this apollo directory on branch apollo-guide-preview, not main. Build from repo root with npm test --prefix apollo; start with npm start --prefix apollo. Health check: /health. No disk, database, API keys or build dependencies. Node 24.19.0 is the tested runtime. No telemetry or visitor-specific application logs. Hosting technical logs may still exist; retention is not independently verified. Keep noindex while pilot review continues.
 
 
-## Character animation
-Apollo has larger illustrated eyes with a single gentle blink every 5.6 seconds and a slow brush-arm gesture every 6 seconds. Pause animation stops eyes, arm and body motion; reduced-motion settings disable all character animation. No flashing, interaction prompts, sounds or attention rewards. Browser-device visual QA remains separate from automated source/state checks.
+## Cloud atelier redesign
+Apollo is now a semi-realistic illustrated adult Greek artist, generated from the owner’s visual references, with ivory/gold/lavender clothing, palette and brush. A separately generated cloud kingdom background and CSS cloud veils create depth. Apollo glides gently; a tightly clipped matching eyelid frame provides one blink every 6.2 seconds. Lesson controls do not move. Pause disables all scene animation; reduced-motion forces a still, open-eyed pose. All image files are local WebP assets, served by an explicit allowlist. No external image or AI calls are made at runtime.
+
+Generated image assets: public/images/apollo-open.webp, apollo-blink.webp, cloud-kingdom.webp. No human interaction or sentience is implied; existing programmed-guide disclosure and hosting privacy notice remain. Browser-device visual verification is not established by source tests.
