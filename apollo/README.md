@@ -4,7 +4,7 @@ A public SSR pilot with two fictional, programmed guides. Apollo teaches drawing
 
 ## Run and test
 
-Node 22 or newer. `npm start` starts the SSR server; `npm test` runs the source, state, security, media and narration tests. No runtime packages, database, accounts, credentials or external AI service are required. Existing Render service uses repository subdirectory `apollo`, branch `apollo-guide-preview`, build `npm test --prefix apollo`, start `npm start --prefix apollo`, health `/health`. Do not change the main portfolio branch when updating this pilot.
+Node 22 or newer. `npm start` starts the SSR server; `npm test` runs the source, state, security, media and narration tests. No runtime packages, database, accounts, credentials or external AI service are required. Existing Render service uses repository subdirectory `apollo`, branch `apollo-guide-preview`, build `npm test --prefix apollo`, start `npm start --prefix apollo`, health `/health`. The start command now serves the main portfolio and embedded studio together; no second Render service is required.
 
 ## Guided lessons
 
@@ -18,12 +18,13 @@ Apollo and his cloud float as a unit using the main site's Colosseum bob, rotati
 
 ## Optional prepared voices
 
-Listen requires an explicit tap. No microphone, autoplay speech, voice upload or live voice service. Distinct synthetic character voices read fixed published scripts. Language-wide same-origin MP3 bundles use short reusable segments and byte-range responses for Safari. Voice Pause/Resume retains position; Stop, Mute, activity changes and hiding/leaving the page cancel playback. Device-local language-matched synthesis is a fallback; unknown/remote voices are not selected. Voice credits/licences are public at `/audio/CREDITS.txt`. Generation scripts are offline build tooling, not visitor endpoints. Physical iPhone audibility requires device confirmation.
+Listen requires an explicit tap. No microphone, autoplay speech, voice upload or live voice service. Distinct synthetic character voices read fixed published scripts. Language-wide same-origin MP3 bundles use short reusable segments and byte-range responses for Safari. Voice Pause/Resume retains position; Stop, Mute, activity changes and hiding/leaving the page cancel playback. Device-local language-matched synthesis is a fallback; unknown/remote voices are not selected. Voice credits/licences are public at `/studio/audio/CREDITS.txt`. Generation scripts are offline build tooling, not visitor endpoints. Physical iPhone audibility requires device confirmation.
 
 ## Privacy, accessibility and limits
 
 No free text, child names/ages, uploads, camera, microphone, location, cookies, cross-session storage, analytics, ads or shopping within the guide. Hosting processes IP/access/security data and audio file/range requests; ranges can reveal audio positions. No claim of zero customer data or universal legal compliance. Keep `noindex` during pilot review. Adult supervision and a jurisdiction-specific child-safety/privacy assessment are recommended before broader deployment.
 
-Keyboard controls, clear focus, bilingual labels, status announcements, reduced motion and stationary controls are included. Without JavaScript, one complete Great Wall lesson is available in English/French, not all seven interactive themes. Optional `/learn` integration prefixes assets; standalone deployment is the currently used setup.
+Keyboard controls, clear focus, bilingual labels, status announcements, reduced motion and stationary controls are included. Without JavaScript, one complete Great Wall lesson is available in English/French, not all seven interactive themes. The website opens the studio in a native dialog with Shadow DOM style isolation, without an iframe. `/studio?guide=apollo` and `/studio?guide=athena&lang=fr` are deep links; legacy `/?guide=` links still open the studio. `/learn` redirects to `/studio`. Close/Escape/Back returns to the website, Forward reopens it; closing cancels speech and demos. Server routes use explicit public asset allowlists, never a generic repository file server.
 
 Static SVG atlases verify artwork, not browser animation. Browser and physical-device QA remain separate from automated tests.
+
