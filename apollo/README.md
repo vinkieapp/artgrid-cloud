@@ -1,64 +1,29 @@
-# ARTGRID Little Studio — Apollo art guide prototype
+# Artgrid Studio
 
-Prepared for a standalone public pilot deployment. This repository does not itself prove deployment or legal compliance.
+A public SSR pilot with two fictional, programmed guides. Apollo teaches drawing and painting the Seven Wonders through art, architecture and conceptual engineering. Athena offers prepared history and cultural context. Intended lesson audience: ages 8–18, with accessible foundations and optional deeper challenges. This is not an age-verification system or child-privacy certification.
 
-## Run
-Requires Node 22 or later. No runtime dependencies or API keys.
+## Run and test
 
-    npm start
+Node 22 or newer. `npm start` starts the SSR server; `npm test` runs the source, state, security, media and narration tests. No runtime packages, database, accounts, credentials or external AI service are required. Existing Render service uses repository subdirectory `apollo`, branch `apollo-guide-preview`, build `npm test --prefix apollo`, start `npm start --prefix apollo`, health `/health`. Do not change the main portfolio branch when updating this pilot.
 
-Open http://localhost:3000 (or ?lang=fr). Run `npm test` for the 12 automated tests.
+## Guided lessons
 
-## What is built
-- Apollo: gently animated illustrated adult Greek-inspired artist with wavy hair, a draped tunic, palette and brush, explicitly labelled programmed/prepared, not a human or live AI.
-- Three complete five-step lessons in English and French: Cloud Garden, Ocean Rhythms, Castle of Shapes.
-- Pencil, crayon and washable water-based paint adaptations.
-- Back, help, repeat, optional break, resume, end/reset and animation pause.
-- Language switching preserves current lesson position. No score, streak, emotional dependency or sales prompts.
-- Prepared content generated into HTML on each server request; browser enhances it with memory-only state.
-- Without JavaScript the full Cloud Garden lesson is readable in EN/FR; other themes require JavaScript in this prototype.
-- Responsive CSS, labelled controls, focus states, reduced-motion support. Actual browser/mobile/screen-reader QA remains pending.
+Seven themes: Great Wall, Petra, Colosseum, Chichén Itzá, Machu Picchu, Taj Mahal and Christ the Redeemer. Each has five bilingual drawing/painting steps, pencil/crayon/washable-water-paint guidance, an optional tip and an optional perspective, proportion, shading or colour challenge. The examples are simplified artistic interpretations, not accurate construction plans. `public/wonder-lessons.mjs` holds lesson text; `public/demonstrations.mjs` holds original native SVG drawings.
 
-## Data boundaries
-No user accounts, free-text input, uploads, voice/camera/location access, external fonts, analytics, advertising, AI calls or persistent browser storage. Choices stay in page memory and reset on refresh/end lesson; language and animation preferences are retained only for the current open page. No server-side customer database or chat transcript.
+Athena retains seven researched, culturally respectful EN/FR entries and source links. Her history guide is not a free-text or live-AI chatbot. Guide switching preserves each activity's choices only while the page remains open. Refresh resets progress. Direct links: `?guide=apollo`, `?guide=athena`, and optional `&lang=fr`.
 
-Client CSP blocks network connections, frames and form submissions. Public serving is allowlisted to CSS and the two browser modules. There is no shop or checkout in this guide.
+## Visual animation
 
-Hosting still processes requests and may retain IP/access/security logs. This design is NOT a claim of zero personal-data processing. Before publication review host logging/retention, vendor agreements, applicable child privacy obligations, parent-facing information, accessibility and age-appropriate content with qualified reviewers. Do not add telemetry, AI, uploads, accounts or shopping without reassessing those boundaries.
+Apollo and his cloud float as a unit using the main site's Colosseum bob, rotation and scale timing, with bounded horizontal drift to keep the guide visible. Visual animation is on by default. Current drawing stages play once automatically when selected; Replay, drawing Pause/Resume and a static Finished example remain available. Global Pause freezes the guide and current drawing. Reduced-motion settings produce static visuals. Unsupported SVG animation shows a readable static example. Lesson controls remain stationary.
 
-## Optional integration with existing ARTGRID SSR app
-Keep this complete folder outside the public asset root. `integration.mjs` exports `handleArtGuide(request)`, which returns a Response for /learn and /learn/* or null elsewhere. In the existing server, call it before `website.handle(request)` and use its response if non-null. It prefixes static paths to /learn. No existing repository files were changed by this package.
+## Optional prepared voices
 
-Keep existing open-ended AI chat disabled. This prototype does not change or certify the earlier commerce backend. No Render resource, GitHub publication, DNS change or charge was made.
+Listen requires an explicit tap. No microphone, autoplay speech, voice upload or live voice service. Distinct synthetic character voices read fixed published scripts. Language-wide same-origin MP3 bundles use short reusable segments and byte-range responses for Safari. Voice Pause/Resume retains position; Stop, Mute, activity changes and hiding/leaving the page cancel playback. Device-local language-matched synthesis is a fallback; unknown/remote voices are not selected. Voice credits/licences are public at `/audio/CREDITS.txt`. Generation scripts are offline build tooling, not visitor endpoints. Physical iPhone audibility requires device confirmation.
 
-## Verification
-- 12 automated Node tests pass (18 full lesson/theme/material/language flows, state controls, SSR/fallback, asset allowlist, CSP and privacy source checks).
-- Additional DOM run using the existing workspace's linkedom passed theme/material selection, French switching mid-lesson, break/resume, cancel/end, animation pause and reset.
-- Real browser screenshot attempt failed because the execution sandbox denied Chromium's socket creation. No claim of browser visual, mobile or screen-reader testing.
-- Included PNG is a separately rendered design illustration using the prototype character/content. It is labelled NOT A BROWSER SCREENSHOT; exact fonts/layout may differ on device.
-- Independent focused safety/UX source review found no blocker for prototype delivery. Not a production safety certification.
+## Privacy, accessibility and limits
 
-## Design preview
-preview/ARTGRID-Apollo-art-guide-design.png shows the Cloud Garden shading step. Source SVG is generated inline by public/guide.mjs. Prepared lesson text and colours can be edited there and in public/style.css.
+No free text, child names/ages, uploads, camera, microphone, location, cookies, cross-session storage, analytics, ads or shopping within the guide. Hosting processes IP/access/security data and audio file/range requests; ranges can reveal audio positions. No claim of zero customer data or universal legal compliance. Keep `noindex` during pilot review. Adult supervision and a jurisdiction-specific child-safety/privacy assessment are recommended before broader deployment.
 
-## Standalone Render pilot
-Deploy only this apollo directory on branch apollo-guide-preview, not main. Build from repo root with npm test --prefix apollo; start with npm start --prefix apollo. Health check: /health. No disk, database, API keys or build dependencies. Node 24.19.0 is the tested runtime. No telemetry or visitor-specific application logs. Hosting technical logs may still exist; retention is not independently verified. Keep noindex while pilot review continues.
+Keyboard controls, clear focus, bilingual labels, status announcements, reduced motion and stationary controls are included. Without JavaScript, one complete Great Wall lesson is available in English/French, not all seven interactive themes. Optional `/learn` integration prefixes assets; standalone deployment is the currently used setup.
 
-
-## Cloud atelier redesign
-Apollo is now a semi-realistic illustrated adult Greek artist, generated from the owner’s visual references, with ivory/gold/lavender clothing, palette and brush. A separately generated cloud kingdom background and CSS cloud veils create depth. Apollo glides gently; a tightly clipped matching eyelid frame provides one blink every 6.2 seconds. Lesson controls do not move. Pause disables all scene animation; reduced-motion forces a still, open-eyed pose. All image files are local WebP assets, served by an explicit allowlist. No external image or AI calls are made at runtime.
-
-Generated image assets: public/images/apollo-open.webp, apollo-blink.webp, cloud-kingdom.webp. No human interaction or sentience is implied; existing programmed-guide disclosure and hosting privacy notice remain. Browser-device visual verification is not established by source tests.
-
-## Two distinct guides
-Apollo uses the approved animated-film face and jeans outfit. He is the fictional artist, architect and engineer; his three curated EN/FR drawing activities include imagined architecture and a conceptual bridge/triangles drawing, not a construction plan. Athena wears the approved lavender jacket and jeans with owl pendant. She is the fictional historian and anthropologist, offering seven researched Wonders with preset dates, history, living cultures and reflection questions in EN/FR. Sources are linked and labelled external. Neither claims professional credentials.
-
-Guide switching preserves each activity’s separate choices in page memory. No new runtime services, AI, commerce, storage or tracking. Pause and reduced motion cover both characters. 13 automated tests verify guide selection, 56 Wonder-language-question branches and existing art flows, source links, asset serving and privacy boundaries. Actual mobile/browser visual QA is separate.
-
-## Optional voices
-Listen plays prepared synthetic EN/FR narration after a user tap, with distinct character voices. No autoplay, microphone or live voice service. Two language-wide same-origin MP3 bundles are requested only on playback, with byte-range support for Safari. Hosting can see file/range requests; no claim is made that technical requests hide lesson positions. Credits and source model licences are public at /audio/CREDITS.txt. Browser-local language-matched speechSynthesis voices are the fallback for uncovered states; remote/unknown voices are never selected. Stop, Mute, activity/guide/language changes and hiding/leaving the page cancel playback. Generation scripts are offline build tooling, not a visitor API. Real iPhone audible playback still requires device confirmation.
-
-## Drawing demonstrations
-All three Apollo themes have five authored progressive SVG examples matched to lesson steps, including the imaginary architecture/bridge activity. Show / Replay starts drawing only after a tap; a pencil tip follows the current stroke. Pause/Resume and Finished example are available. Reduced motion shows a static final example. Unsupported SVG animation falls back to a readable static drawing. Every theme encourages personal variations. Athena and portfolio remain separate. Direct links ?guide=apollo and ?guide=athena select guides; &lang=fr selects French.
-
-Drawing Pause is disabled until playback begins and after it finishes; the paused state exposes aria-pressed and Resume. This prevents a completed five-second stroke appearing to ignore Pause.
+Static SVG atlases verify artwork, not browser animation. Browser and physical-device QA remain separate from automated tests.

@@ -28,3 +28,17 @@ body{background:#f7f2eb}header{background:#fffaf2}.heading{max-width:850px;margi
 .demo-panel{border-top:1px solid #e3d4df;margin-top:25px;padding-top:10px}.drawing-demo svg{display:block;width:100%;max-height:330px;margin:auto}.demo-caption{font-size:12px;line-height:1.5;color:#685875}.demo-controls{display:flex;flex-wrap:wrap;gap:7px}.demo-controls button{font-size:12px;padding:9px 12px;min-height:44px}.demo-controls [aria-pressed=true]{background:#e9def1}.demo-running .demo-current{stroke-dasharray:1;stroke-dashoffset:1;fill:none}.demo-running .drawing-tip{visibility:visible}@media(prefers-reduced-motion:reduce){.drawing-tip{visibility:hidden!important}.demo-current{stroke-dasharray:none!important;stroke-dashoffset:0!important}}
 
 .demo-controls button:disabled{opacity:.5;cursor:default;box-shadow:none}.demo-controls button[aria-pressed="true"]{background:#e9def1;border-color:#72518b}
+
+/* Shared floating guide/cloud unit uses the main Wonders' bob/rotation/scale timings. */
+.floating-cloud-guide{position:absolute;inset:0;transform-origin:50% 55%;will-change:transform}.floating-cloud-guide .apollo-glide{animation:none}.floating-cloud-guide .cloud-veil{animation:none}.still .apollo-blink-frame{animation:portrait-blink 6.2s linear infinite!important;animation-play-state:paused!important}.sound-controls button:disabled{opacity:.5;cursor:default}.themes{grid-template-columns:repeat(2,minmax(0,1fr))}.theme{min-height:110px}.theme>span{font-size:24px}
+@media(prefers-reduced-motion:reduce){.floating-cloud-guide{transform:none!important}.still .apollo-blink-frame{animation:none!important;opacity:0!important}}
+/* Append after the existing drawing demonstration CSS. No inline SVG styles are needed. */
+.drawing-demo .demo-current{visibility:hidden}
+.drawing-demo.demo-running .demo-current{visibility:visible}
+.drawing-demo.demo-running .demo-current-detail{visibility:hidden}
+.drawing-demo.demo-running .drawing-tip{visibility:visible}
+@media(prefers-reduced-motion:reduce){
+  .drawing-demo .drawing-tip{visibility:hidden!important}
+  .drawing-demo .demo-current{visibility:hidden!important}
+  .drawing-demo .demo-current-detail{visibility:visible!important}
+}

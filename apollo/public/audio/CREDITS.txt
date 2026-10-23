@@ -5,15 +5,21 @@ human narrator and not a live voice or AI service. Only the fixed, public lesson
 scripts were synthesized. No microphone, user text, or user audio was used.
 Models and synthesis software are not distributed with this website.
 
-English Apollo: Piper en_US-john-medium; trained on public-domain LibriVox
-recordings, assembled by Bryce Beattie.
-https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/john/medium/MODEL_CARD
-https://librivox.org
+English Apollo: Piper en_GB-northern_english_male-medium; OpenSLR83 Northern
+English speech data. Original synthetic character voice, with the approved
+brisk delivery increased by 7% and a gentle one-semitone pitch adjustment.
+https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_GB/northern_english_male/medium/MODEL_CARD
 
-English Athena: Piper en_US-ljspeech-medium; LJ Speech public-domain dataset
-compiled by Keith Ito and Linda Johnson; model by Bryce Beattie.
-https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/ljspeech/medium/MODEL_CARD
-https://keithito.com/LJ-Speech-Dataset/
+English Athena: Piper en_GB-southern_english_female-low; OpenSLR83 Southern
+English speech data. Original synthetic character voice at the approved pace.
+https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_GB/southern_english_female/low/MODEL_CARD
+
+OpenSLR83: Copyright 2018, 2019 Google, Inc.; volunteers and dataset authors
+Isin Demirsahin, Oddur Kjartansson, Alexander Gutkin and Clara Rivera.
+Dataset and English audio bundle: CC BY-SA 4.0.
+https://www.openslr.org/83/
+https://creativecommons.org/licenses/by-sa/4.0/
+These character performances do not impersonate actors or celebrities.
 
 French Apollo: Piper fr_FR-upmc-medium, Pierre speaker; UPMC Pierre voice data,
 Pierre Chauvin, ISIR/Université Pierre et Marie Curie and MaryTTS contributors, CC BY-SA 4.0.
@@ -28,7 +34,7 @@ https://datashare.is.ed.ac.uk/handle/10283/2353
 https://creativecommons.org/licenses/by/4.0/
 
 Changes: new synthesized ARTGRID scripts, normalized mono PCM, concatenation
-with silent separators and MP3 compression. French audio bundle is made
+with silent separators and MP3 compression. English and French audio bundles are made
 available under CC BY-SA 4.0 with attribution above. Attribution is not an
 endorsement by the dataset contributors or voice-model authors.
 
