@@ -7,7 +7,7 @@ Requires Node 22 or later. No runtime dependencies or API keys.
 
     npm start
 
-Open http://localhost:3000 (or ?lang=fr). Run `npm test` for the 10 automated tests.
+Open http://localhost:3000 (or ?lang=fr). Run `npm test` for the 11 automated tests.
 
 ## What is built
 - Apollo: gently animated illustrated adult Greek-inspired artist with wavy hair, a draped tunic, palette and brush, explicitly labelled programmed/prepared, not a human or live AI.
@@ -32,7 +32,7 @@ Keep this complete folder outside the public asset root. `integration.mjs` expor
 Keep existing open-ended AI chat disabled. This prototype does not change or certify the earlier commerce backend. No Render resource, GitHub publication, DNS change or charge was made.
 
 ## Verification
-- 10 automated Node tests pass (18 full lesson/theme/material/language flows, state controls, SSR/fallback, asset allowlist, CSP and privacy source checks).
+- 11 automated Node tests pass (18 full lesson/theme/material/language flows, state controls, SSR/fallback, asset allowlist, CSP and privacy source checks).
 - Additional DOM run using the existing workspace's linkedom passed theme/material selection, French switching mid-lesson, break/resume, cancel/end, animation pause and reset.
 - Real browser screenshot attempt failed because the execution sandbox denied Chromium's socket creation. No claim of browser visual, mobile or screen-reader testing.
 - Included PNG is a separately rendered design illustration using the prototype character/content. It is labelled NOT A BROWSER SCREENSHOT; exact fonts/layout may differ on device.
@@ -43,3 +43,7 @@ preview/ARTGRID-Apollo-art-guide-design.png shows the Cloud Garden shading step.
 
 ## Standalone Render pilot
 Deploy only this apollo directory on branch apollo-guide-preview, not main. Build from repo root with npm test --prefix apollo; start with npm start --prefix apollo. Health check: /health. No disk, database, API keys or build dependencies. Node 24.19.0 is the tested runtime. No telemetry or visitor-specific application logs. Hosting technical logs may still exist; retention is not independently verified. Keep noindex while pilot review continues.
+
+
+## Character animation
+Apollo has larger illustrated eyes with a single gentle blink every 5.6 seconds and a slow brush-arm gesture every 6 seconds. Pause animation stops eyes, arm and body motion; reduced-motion settings disable all character animation. No flashing, interaction prompts, sounds or attention rewards. Browser-device visual QA remains separate from automated source/state checks.

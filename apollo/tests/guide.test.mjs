@@ -9,3 +9,16 @@ test('security headers block all client connections and sensitive permissions',a
 test('no tracking, storage, accounts, free-text or external imports in browser source',async()=>{const src=(await Promise.all(['guide.mjs','client.mjs','style.css'].map(f=>readFile(new URL('../public/'+f,import.meta.url),'utf8')))).join('\n');assert.doesNotMatch(src,/https?:\/\/|fetch\(|XMLHttpRequest|WebSocket|localStorage|sessionStorage|document\.cookie|indexedDB|sendBeacon|<input|<textarea|contenteditable|getUserMedia/);assert.match(src,/prefers-reduced-motion/);assert.match(src,/focus-visible/);assert.match(src,/aria-pressed/)});
 test('animation can be paused without losing the lesson',()=>{const s=transition({...initial(),stage:'lesson',step:2},'motion');assert.equal(s.motion,false);assert.equal(s.step,2);assert.match(render(s),/guide-card still/)});
 test('optional SSR mount safely prefixes assets and blocks code',async()=>{const{handleArtGuide}=await import('../integration.mjs');const r=await handleArtGuide(new Request('http://local/learn?lang=fr'));assert.match(await r.text(),/src="\/learn\/client.mjs"/);assert.equal((await handleArtGuide(new Request('http://local/learn/server.mjs'))).status,404);assert.equal(await handleArtGuide(new Request('http://local/shop')),null)});
+
+
+test('big eyes blink slowly and all character motion obeys pause and reduced motion',async()=>{
+ const css=await readFile(new URL('../public/style.css',import.meta.url),'utf8');
+ const html=render(initial());assert.match(html,/class="apollo-eyes"/);assert.match(html,/rx="7" ry="8"/);assert.match(html,/class="apollo-brush-arm"/);
+ assert.match(css,/apollo-blink 5\.6s/);assert.match(css,/apollo-paint 6s/);
+ assert.match(css,/\.still \.float,\.still \.apollo-eyes,\.still \.apollo-brush-arm\{animation:none\}/);
+ assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{\.apollo \.float,\.apollo-eyes,\.apollo-brush-arm\{animation:none!important;transform:none!important\}/);
+ let state=transition(initial(),'motion');for(const action of ['start','pause','resume','reset']){state=transition(state,action);assert.equal(state.motion,false);assert.match(render(state),/guide-card still/)}
+ state=transition(state,'motion');assert.equal(state.motion,true);assert.doesNotMatch(render(state),/guide-card still/);
+ assert.match(render({...state,lang:'fr'}),/Arrêter l’animation/);
+ assert.match(html,/Hosting processes technical request data/);
+});
