@@ -21,3 +21,17 @@ test('cloud scene animation respects pause and reduced motion',async()=>{
  for(const name of ['apollo-open','apollo-blink','cloud-kingdom']){const r=await handle(new Request('http://local/images/'+name+'.webp'));assert.equal(r.status,200);assert.equal(r.headers.get('content-type'),'image/webp');assert.ok((await r.arrayBuffer()).byteLength>1000)}
  assert.equal((await handle(new Request('http://local/images/private.png'))).status,404);
 });
+
+test('Apollo and Athena switch safely without losing lesson or language',async()=>{
+ for(const lang of ['en','fr']){let s={...initial(),lang,stage:'lesson',step:3,theme:2,material:1,motion:false};s=transition(s,'character','athena');assert.equal(s.character,'athena');assert.equal(s.step,3);assert.equal(s.lang,lang);assert.equal(s.motion,false);const html=render(s);assert.match(html,/Athena ·/);assert.match(html,/src="\/images\/athena-open.webp"/);assert.match(html,/data-value="athena" aria-pressed="true"/);s=transition(s,'reset');assert.equal(s.character,'athena');assert.equal(s.motion,false);s=transition(s,'character','apollo');assert.match(render(s),/Apollo ·/);assert.equal(transition(s,'character','<script>').character,'apollo')}
+ for(const name of ['athena-open','athena-blink']){const r=await handle(new Request('http://local/images/'+name+'.webp'));assert.equal(r.status,200);assert.equal(r.headers.get('content-type'),'image/webp')}
+});
+
+test('distinct bilingual roles and all seven researched Wonder branches',async()=>{
+ const {wonders}=await import('../public/wonders.mjs');assert.equal(wonders.length,7);
+ for(const lang of ['en','fr'])for(let wonder=0;wonder<7;wonder++)for(const question of ['date','history','culture','question']){const s={...initial(),character:'athena',lang,wonder,question};const html=render(s);assert.ok(html.includes(wonders[wonder][lang].name));assert.ok(html.includes(wonders[wonder][lang][question].replaceAll('&','&amp;')));assert.doesNotMatch(html,/data-action="material"/);assert.ok(wonders[wonder].sources.every(x=>x.url.startsWith('https://')));assert.match(html,/fictional|fictif|fictive/)}
+ const apollo=render({...initial(),stage:'lesson',theme:2,step:3});assert.match(apollo,/engineer/);assert.match(apollo,/Imagine an engineered bridge/);assert.doesNotMatch(apollo,/wonder-picker/);
+ assert.equal(transition(initial(),'wonder','99').wonder,0);assert.equal(transition(initial(),'question','invalid').question,'history');
+ let s=transition({...initial(),stage:'lesson',step:2,theme:2},'character','athena');s=transition(s,'wonder','4');s=transition(s,'character','apollo');assert.equal(s.step,2);assert.equal(s.theme,2);s=transition(s,'character','athena');assert.equal(s.wonder,4);
+ assert.equal((await handle(new Request('http://local/wonders.mjs'))).status,200);
+});

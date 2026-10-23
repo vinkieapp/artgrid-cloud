@@ -7,7 +7,7 @@ Requires Node 22 or later. No runtime dependencies or API keys.
 
     npm start
 
-Open http://localhost:3000 (or ?lang=fr). Run `npm test` for the 11 automated tests.
+Open http://localhost:3000 (or ?lang=fr). Run `npm test` for the 12 automated tests.
 
 ## What is built
 - Apollo: gently animated illustrated adult Greek-inspired artist with wavy hair, a draped tunic, palette and brush, explicitly labelled programmed/prepared, not a human or live AI.
@@ -32,7 +32,7 @@ Keep this complete folder outside the public asset root. `integration.mjs` expor
 Keep existing open-ended AI chat disabled. This prototype does not change or certify the earlier commerce backend. No Render resource, GitHub publication, DNS change or charge was made.
 
 ## Verification
-- 11 automated Node tests pass (18 full lesson/theme/material/language flows, state controls, SSR/fallback, asset allowlist, CSP and privacy source checks).
+- 12 automated Node tests pass (18 full lesson/theme/material/language flows, state controls, SSR/fallback, asset allowlist, CSP and privacy source checks).
 - Additional DOM run using the existing workspace's linkedom passed theme/material selection, French switching mid-lesson, break/resume, cancel/end, animation pause and reset.
 - Real browser screenshot attempt failed because the execution sandbox denied Chromium's socket creation. No claim of browser visual, mobile or screen-reader testing.
 - Included PNG is a separately rendered design illustration using the prototype character/content. It is labelled NOT A BROWSER SCREENSHOT; exact fonts/layout may differ on device.
@@ -49,3 +49,8 @@ Deploy only this apollo directory on branch apollo-guide-preview, not main. Buil
 Apollo is now a semi-realistic illustrated adult Greek artist, generated from the owner’s visual references, with ivory/gold/lavender clothing, palette and brush. A separately generated cloud kingdom background and CSS cloud veils create depth. Apollo glides gently; a tightly clipped matching eyelid frame provides one blink every 6.2 seconds. Lesson controls do not move. Pause disables all scene animation; reduced-motion forces a still, open-eyed pose. All image files are local WebP assets, served by an explicit allowlist. No external image or AI calls are made at runtime.
 
 Generated image assets: public/images/apollo-open.webp, apollo-blink.webp, cloud-kingdom.webp. No human interaction or sentience is implied; existing programmed-guide disclosure and hosting privacy notice remain. Browser-device visual verification is not established by source tests.
+
+## Two distinct guides
+Apollo uses the approved animated-film face and jeans outfit. He is the fictional artist, architect and engineer; his three curated EN/FR drawing activities include imagined architecture and a conceptual bridge/triangles drawing, not a construction plan. Athena wears the approved lavender jacket and jeans with owl pendant. She is the fictional historian and anthropologist, offering seven researched Wonders with preset dates, history, living cultures and reflection questions in EN/FR. Sources are linked and labelled external. Neither claims professional credentials.
+
+Guide switching preserves each activity’s separate choices in page memory. No new runtime services, AI, commerce, storage or tracking. Pause and reduced motion cover both characters. 13 automated tests verify guide selection, 56 Wonder-language-question branches and existing art flows, source links, asset serving and privacy boundaries. Actual mobile/browser visual QA is separate.
