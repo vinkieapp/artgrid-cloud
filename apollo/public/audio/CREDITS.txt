@@ -1,0 +1,35 @@
+ARTGRID prepared synthetic narration
+
+These are pre-generated synthetic character performances, not recordings by a
+human narrator and not a live voice or AI service. Only the fixed, public lesson
+scripts were synthesized. No microphone, user text, or user audio was used.
+Models and synthesis software are not distributed with this website.
+
+English Apollo: Piper en_US-john-medium; trained on public-domain LibriVox
+recordings, assembled by Bryce Beattie.
+https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/john/medium/MODEL_CARD
+https://librivox.org
+
+English Athena: Piper en_US-ljspeech-medium; LJ Speech public-domain dataset
+compiled by Keith Ito and Linda Johnson; model by Bryce Beattie.
+https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/ljspeech/medium/MODEL_CARD
+https://keithito.com/LJ-Speech-Dataset/
+
+French Apollo: Piper fr_FR-upmc-medium, Pierre speaker; UPMC Pierre voice data,
+Pierre Chauvin, ISIR/Université Pierre et Marie Curie and MaryTTS contributors, CC BY-SA 4.0.
+https://huggingface.co/rhasspy/piper-voices/blob/main/fr/fr_FR/upmc/medium/MODEL_CARD
+https://github.com/marytts/upmc-pierre-data
+https://creativecommons.org/licenses/by-sa/4.0/
+
+French Athena: Piper fr_FR-siwis-medium; SIWIS French Speech Synthesis Database,
+Junichi Yamagishi, Pierre-Edouard Honnet, Philip Garner and Alexandros Lazaridis (2017), University of Edinburgh, CC BY 4.0.
+https://huggingface.co/rhasspy/piper-voices/blob/main/fr/fr_FR/siwis/medium/MODEL_CARD
+https://datashare.is.ed.ac.uk/handle/10283/2353
+https://creativecommons.org/licenses/by/4.0/
+
+Changes: new synthesized ARTGRID scripts, normalized mono PCM, concatenation
+with silent separators and MP3 compression. French audio bundle is made
+available under CC BY-SA 4.0 with attribution above. Attribution is not an
+endorsement by the dataset contributors or voice-model authors.
+
+Synthesis: Piper (https://github.com/OHF-Voice/piper1-gpl).
