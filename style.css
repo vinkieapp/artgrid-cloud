@@ -98,7 +98,7 @@
 .creative-tools .section-heading h2 em{color:#89629d}
 .creative-tools .section-heading p{max-width:370px;line-height:1.7;color:#625b6a}
 .creative-tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
-.creative-tool-card{min-width:0;overflow:hidden;border:1px solid #e4d7e8;background:#fffdfb;border-radius:24px;box-shadow:0 14px 36px #40334f12}
+.creative-tool-card,.collection-preview{min-width:0;overflow:hidden;border:1px solid #e4d7e8;background:#fffdfb;border-radius:24px;box-shadow:0 14px 36px #40334f12}
 .tool-image-wrap{display:flex;justify-content:center;align-items:center;height:250px;background:#fff;padding:24px}
 .tool-image-wrap img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .tool-card-content{padding:28px}
@@ -111,3 +111,7 @@
 @media(max-width:700px){.creative-tools{padding:52px 22px}.creative-tools .section-heading{display:block}.creative-tool-grid{grid-template-columns:1fr}.tool-image-wrap{height:220px}.tool-card-content p{min-height:0}.hero-actions{gap:10px}.hero-actions .pill{font-size:14px;padding:14px 17px}}
 
 .shop-feature-actions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.shop-feature-actions .pill{display:inline-flex;align-items:center;justify-content:center;min-height:56px;margin:0;padding:15px 22px;white-space:normal}.shop-feature-actions .tools-pill{background:#fff8ee;color:#40334f;border:1px solid #bda8c9}@media(max-width:700px){.shop-feature-actions .pill{flex:1 1 190px}}
+
+/* Match the collection sheet to the Creative Tools cards without cropping the artwork. */
+.collection-preview img{border-radius:0}
+.collection-preview figcaption{margin:0;padding:28px}
