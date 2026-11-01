@@ -110,3 +110,5 @@
 .tools-collection-cta{display:inline-flex;margin-top:28px}
 .creative-tools a:focus-visible,.hero-actions a:focus-visible{outline:3px solid #795693;outline-offset:4px}
 @media(max-width:700px){.creative-tools{padding:52px 22px}.creative-tools .section-heading{display:block}.creative-tool-grid{grid-template-columns:1fr}.tool-image-wrap{height:220px}.tool-card-content p{min-height:0}.hero-actions{gap:10px}.hero-actions .pill{font-size:14px;padding:14px 17px}}
+
+.shop-feature-actions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.shop-feature-actions .pill{display:inline-flex;align-items:center;justify-content:center;min-height:56px;margin:0;padding:15px 22px;white-space:normal}.shop-feature-actions .tools-pill{background:#fff8ee;color:#40334f;border:1px solid #bda8c9}@media(max-width:700px){.shop-feature-actions .pill{flex:1 1 190px}}
