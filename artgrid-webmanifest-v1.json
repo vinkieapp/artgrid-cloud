@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "ARTGRID",
-  "short_name": "ARTGRID",
+  "name": "Artgrid",
+  "short_name": "Artgrid",
   "start_url": "/",
   "scope": "/",
   "display": "browser",
